@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		841C5E41187D6EC700FE3ABD /* WLMenPai.m in Sources */ = {isa = PBXBuildFile; fileRef = 841C5E40187D6EC700FE3ABD /* WLMenPai.m */; };
+		841C5E46187D74FB00FE3ABD /* test_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 841C5E42187D74FB00FE3ABD /* test_bg.png */; };
+		841C5E47187D74FB00FE3ABD /* test_grid.png in Resources */ = {isa = PBXBuildFile; fileRef = 841C5E43187D74FB00FE3ABD /* test_grid.png */; };
+		841C5E48187D74FB00FE3ABD /* test_restroom.png in Resources */ = {isa = PBXBuildFile; fileRef = 841C5E44187D74FB00FE3ABD /* test_restroom.png */; };
+		841C5E49187D74FB00FE3ABD /* test_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 841C5E45187D74FB00FE3ABD /* test_selected.png */; };
 		84832528187D52BB00365C6F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84832527187D52BB00365C6F /* Foundation.framework */; };
 		8483252A187D52BB00365C6F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84832529187D52BB00365C6F /* CoreGraphics.framework */; };
 		8483252C187D52BB00365C6F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8483252B187D52BB00365C6F /* UIKit.framework */; };
@@ -42,6 +47,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		841C5E3F187D6EC700FE3ABD /* WLMenPai.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLMenPai.h; sourceTree = "<group>"; };
+		841C5E40187D6EC700FE3ABD /* WLMenPai.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WLMenPai.m; sourceTree = "<group>"; };
+		841C5E42187D74FB00FE3ABD /* test_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test_bg.png; sourceTree = "<group>"; };
+		841C5E43187D74FB00FE3ABD /* test_grid.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test_grid.png; sourceTree = "<group>"; };
+		841C5E44187D74FB00FE3ABD /* test_restroom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test_restroom.png; sourceTree = "<group>"; };
+		841C5E45187D74FB00FE3ABD /* test_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test_selected.png; sourceTree = "<group>"; };
 		84832524187D52BB00365C6F /* WuLin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WuLin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84832527187D52BB00365C6F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		84832529187D52BB00365C6F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -102,6 +113,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		841C5E4A187D750000FE3ABD /* TestPNGs */ = {
+			isa = PBXGroup;
+			children = (
+				841C5E42187D74FB00FE3ABD /* test_bg.png */,
+				841C5E43187D74FB00FE3ABD /* test_grid.png */,
+				841C5E44187D74FB00FE3ABD /* test_restroom.png */,
+				841C5E45187D74FB00FE3ABD /* test_selected.png */,
+				84832544187D52BB00365C6F /* Spaceship.png */,
+			);
+			name = TestPNGs;
+			sourceTree = "<group>";
+		};
 		8483251B187D52BB00365C6F = {
 			isa = PBXGroup;
 			children = (
@@ -200,7 +223,7 @@
 		84832569187D55EB00365C6F /* Assets */ = {
 			isa = PBXGroup;
 			children = (
-				84832544187D52BB00365C6F /* Spaceship.png */,
+				841C5E4A187D750000FE3ABD /* TestPNGs */,
 				84832546187D52BB00365C6F /* Images.xcassets */,
 			);
 			name = Assets;
@@ -211,6 +234,8 @@
 			children = (
 				8483256B187D569100365C6F /* WLLayerdNode.h */,
 				8483256C187D569100365C6F /* WLLayerdNode.m */,
+				841C5E3F187D6EC700FE3ABD /* WLMenPai.h */,
+				841C5E40187D6EC700FE3ABD /* WLMenPai.m */,
 				84832574187D59AF00365C6F /* WLGridNode.h */,
 				84832575187D59AF00365C6F /* WLGridNode.m */,
 				84832571187D590900365C6F /* WLBuildingNode.h */,
@@ -300,8 +325,12 @@
 			files = (
 				84832534187D52BB00365C6F /* InfoPlist.strings in Resources */,
 				84832547187D52BB00365C6F /* Images.xcassets in Resources */,
+				841C5E48187D74FB00FE3ABD /* test_restroom.png in Resources */,
+				841C5E46187D74FB00FE3ABD /* test_bg.png in Resources */,
+				841C5E49187D74FB00FE3ABD /* test_selected.png in Resources */,
 				84832545187D52BB00365C6F /* Spaceship.png in Resources */,
 				8483253D187D52BB00365C6F /* Main.storyboard in Resources */,
+				841C5E47187D74FB00FE3ABD /* test_grid.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -322,6 +351,7 @@
 			files = (
 				84832540187D52BB00365C6F /* WLViewController.m in Sources */,
 				84832576187D59AF00365C6F /* WLGridNode.m in Sources */,
+				841C5E41187D6EC700FE3ABD /* WLMenPai.m in Sources */,
 				84832568187D55C500365C6F /* WLLayeredScene.m in Sources */,
 				84832573187D590900365C6F /* WLBuildingNode.m in Sources */,
 				84832543187D52BB00365C6F /* WLMyScene.m in Sources */,

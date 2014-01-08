@@ -7,45 +7,63 @@
 //
 
 #import "WLMyScene.h"
+#import "WLMenPai.h"
+#import "WLButtonNode.h"
+#import "WLBuildingNode.h"
+
+@interface WLMyScene ()
+
+@property (nonatomic) WLMenPai *world;
+
+@end
 
 @implementation WLMyScene
+
+- (void)dealloc
+{
+    self.world = nil;
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 
 #pragma mark - Init
 -(id)initWithSize:(CGSize)size {    
     if (self = [super initWithSize:size]) {
         /* Setup your scene here */
+        WLMenPai *world = [WLMenPai spriteNodeWithImageNamed:@"test_bg"];
+        world.userInteractionEnabled = YES;
+        world.anchorPoint = CGPointZero;
+        self.world = world;
+        [self addNode:world atWorldLayer:WLSceneLayerGame];
         
-        self.backgroundColor = [SKColor colorWithRed:0.15 green:0.15 blue:0.3 alpha:1.0];
-        
-        SKLabelNode *myLabel = [SKLabelNode labelNodeWithFontNamed:@"Chalkduster"];
-        
-        myLabel.text = @"Hello, World!";
-        myLabel.fontSize = 30;
-        myLabel.position = CGPointMake(CGRectGetMidX(self.frame),
-                                       CGRectGetMidY(self.frame));
-        
-        [self addChild:myLabel];
+        WLButtonNode *button = [WLButtonNode spriteNodeWithColor:[SKColor yellowColor] size:CGSizeMake(100, 40)];
+        button.userInteractionEnabled = YES;
+        button.position = CGPointMake(10 + button.size.width / 2, self.size.height - 30 - button.size.height / 2);
+        [self addNode:button atWorldLayer:WLSceneLayerHUD];
     }
     return self;
+}
+
+- (void)didMoveToView:(SKView *)view
+{
+    [super didMoveToView:view];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didReceiveButtonNotification:) name:(NSString *)WLButtonNodeDidTappedNotification object:nil];
+}
+
+- (void)didReceiveButtonNotification:(NSNotification *)notification
+{
+    WLBuildingNode *building = [WLBuildingNode buildingWithShadowImageName:@"test_selected" xTileCount:2 yTileCount:2];
+    building.userInteractionEnabled = YES;
+    building.size = CGSizeMake(building.size.width, building.size.height);
+    [self.world addNode:building atWorldLayer:WLWorldLayerAboveCharacter];
+    [building moveToPointInMathCoord:CGPointMake(1, 1)];
+    NSLog(@"(x, y) = %@", NSStringFromCGPoint(building.position));
 }
 
 #pragma mark - Touches
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     /* Called when a touch begins */
-    
-    for (UITouch *touch in touches) {
-        CGPoint location = [touch locationInNode:self];
-        
-        SKSpriteNode *sprite = [SKSpriteNode spriteNodeWithImageNamed:@"Spaceship"];
-        
-        sprite.position = location;
-        
-        SKAction *action = [SKAction rotateByAngle:M_PI duration:1];
-        
-        [sprite runAction:[SKAction repeatActionForever:action]];
-        
-        [self addChild:sprite];
-    }
 }
 
 -(void)update:(CFTimeInterval)currentTime {

@@ -23,7 +23,6 @@ const float kGridHeight = 32.f;
 #pragma mark - To be override
 - (void)moveToPointInMathCoord:(CGPoint)point
 {
-    
 }
 
 - (void)generateTilesWithGridWidth:(NSInteger)gridWidth gridHeight:(NSInteger)gridHeight

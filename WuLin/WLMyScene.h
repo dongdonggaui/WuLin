@@ -6,8 +6,8 @@
 //  Copyright (c) 2014年 huangluyang. All rights reserved.
 //
 
-#import <SpriteKit/SpriteKit.h>
+#import "WLLayeredScene.h"
 
-@interface WLMyScene : SKScene
+@interface WLMyScene : WLLayeredScene
 
 @end

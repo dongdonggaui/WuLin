@@ -8,6 +8,14 @@
 
 #import "WLButtonNode.h"
 
+const NSString *WLButtonNodeDidTappedNotification = @"WLButtonNodeDidTappedNotification";
+
 @implementation WLButtonNode
+
+#pragma mark - Touches
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [[NSNotificationCenter defaultCenter] postNotificationName:(NSString *)WLButtonNodeDidTappedNotification object:nil];
+}
 
 @end

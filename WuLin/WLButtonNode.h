@@ -8,6 +8,8 @@
 
 #import <SpriteKit/SpriteKit.h>
 
+extern const NSString *WLButtonNodeDidTappedNotification;
+
 @interface WLButtonNode : SKSpriteNode
 
 @end

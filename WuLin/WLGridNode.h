@@ -10,4 +10,7 @@
 
 @interface WLGridNode : SKSpriteNode
 
+- (void)moveToPointInMathCoord:(CGPoint)point;
+- (CGPoint)convertCoordinateToScene:(CGPoint)tileCoordinate offset:(CGPoint)offset;
+
 @end

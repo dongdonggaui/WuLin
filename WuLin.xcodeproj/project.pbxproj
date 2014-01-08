@@ -24,6 +24,11 @@
 		84832550187D52BB00365C6F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8483252B187D52BB00365C6F /* UIKit.framework */; };
 		84832558187D52BB00365C6F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 84832556187D52BB00365C6F /* InfoPlist.strings */; };
 		8483255A187D52BB00365C6F /* WuLinTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 84832559187D52BB00365C6F /* WuLinTests.m */; };
+		84832568187D55C500365C6F /* WLLayeredScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 84832567187D55C500365C6F /* WLLayeredScene.m */; };
+		8483256D187D569100365C6F /* WLLayerdNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 8483256C187D569100365C6F /* WLLayerdNode.m */; };
+		84832570187D589E00365C6F /* WLButtonNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 8483256F187D589E00365C6F /* WLButtonNode.m */; };
+		84832573187D590900365C6F /* WLBuildingNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 84832572187D590900365C6F /* WLBuildingNode.m */; };
+		84832576187D59AF00365C6F /* WLGridNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 84832575187D59AF00365C6F /* WLGridNode.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +65,16 @@
 		84832555187D52BB00365C6F /* WuLinTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "WuLinTests-Info.plist"; sourceTree = "<group>"; };
 		84832557187D52BB00365C6F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		84832559187D52BB00365C6F /* WuLinTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WuLinTests.m; sourceTree = "<group>"; };
+		84832566187D55C500365C6F /* WLLayeredScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLLayeredScene.h; sourceTree = "<group>"; };
+		84832567187D55C500365C6F /* WLLayeredScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WLLayeredScene.m; sourceTree = "<group>"; };
+		8483256B187D569100365C6F /* WLLayerdNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLLayerdNode.h; sourceTree = "<group>"; };
+		8483256C187D569100365C6F /* WLLayerdNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WLLayerdNode.m; sourceTree = "<group>"; };
+		8483256E187D589E00365C6F /* WLButtonNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLButtonNode.h; sourceTree = "<group>"; };
+		8483256F187D589E00365C6F /* WLButtonNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WLButtonNode.m; sourceTree = "<group>"; };
+		84832571187D590900365C6F /* WLBuildingNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLBuildingNode.h; sourceTree = "<group>"; };
+		84832572187D590900365C6F /* WLBuildingNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WLBuildingNode.m; sourceTree = "<group>"; };
+		84832574187D59AF00365C6F /* WLGridNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLGridNode.h; sourceTree = "<group>"; };
+		84832575187D59AF00365C6F /* WLGridNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WLGridNode.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,15 +136,10 @@
 		8483252F187D52BB00365C6F /* WuLin */ = {
 			isa = PBXGroup;
 			children = (
-				84832538187D52BB00365C6F /* WLAppDelegate.h */,
-				84832539187D52BB00365C6F /* WLAppDelegate.m */,
-				8483253B187D52BB00365C6F /* Main.storyboard */,
-				8483253E187D52BB00365C6F /* WLViewController.h */,
-				8483253F187D52BB00365C6F /* WLViewController.m */,
-				84832541187D52BB00365C6F /* WLMyScene.h */,
-				84832542187D52BB00365C6F /* WLMyScene.m */,
-				84832544187D52BB00365C6F /* Spaceship.png */,
-				84832546187D52BB00365C6F /* Images.xcassets */,
+				84832563187D552500365C6F /* Root */,
+				8483256A187D560200365C6F /* Sprites */,
+				84832564187D552F00365C6F /* Scenes */,
+				84832569187D55EB00365C6F /* Assets */,
 				84832530187D52BB00365C6F /* Supporting Files */,
 			);
 			path = WuLin;
@@ -162,6 +172,53 @@
 				84832556187D52BB00365C6F /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		84832563187D552500365C6F /* Root */ = {
+			isa = PBXGroup;
+			children = (
+				84832538187D52BB00365C6F /* WLAppDelegate.h */,
+				84832539187D52BB00365C6F /* WLAppDelegate.m */,
+				8483253B187D52BB00365C6F /* Main.storyboard */,
+				8483253E187D52BB00365C6F /* WLViewController.h */,
+				8483253F187D52BB00365C6F /* WLViewController.m */,
+			);
+			name = Root;
+			sourceTree = "<group>";
+		};
+		84832564187D552F00365C6F /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				84832566187D55C500365C6F /* WLLayeredScene.h */,
+				84832567187D55C500365C6F /* WLLayeredScene.m */,
+				84832541187D52BB00365C6F /* WLMyScene.h */,
+				84832542187D52BB00365C6F /* WLMyScene.m */,
+			);
+			name = Scenes;
+			sourceTree = "<group>";
+		};
+		84832569187D55EB00365C6F /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				84832544187D52BB00365C6F /* Spaceship.png */,
+				84832546187D52BB00365C6F /* Images.xcassets */,
+			);
+			name = Assets;
+			sourceTree = "<group>";
+		};
+		8483256A187D560200365C6F /* Sprites */ = {
+			isa = PBXGroup;
+			children = (
+				8483256B187D569100365C6F /* WLLayerdNode.h */,
+				8483256C187D569100365C6F /* WLLayerdNode.m */,
+				84832574187D59AF00365C6F /* WLGridNode.h */,
+				84832575187D59AF00365C6F /* WLGridNode.m */,
+				84832571187D590900365C6F /* WLBuildingNode.h */,
+				84832572187D590900365C6F /* WLBuildingNode.m */,
+				8483256E187D589E00365C6F /* WLButtonNode.h */,
+				8483256F187D589E00365C6F /* WLButtonNode.m */,
+			);
+			name = Sprites;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -264,9 +321,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				84832540187D52BB00365C6F /* WLViewController.m in Sources */,
+				84832576187D59AF00365C6F /* WLGridNode.m in Sources */,
+				84832568187D55C500365C6F /* WLLayeredScene.m in Sources */,
+				84832573187D590900365C6F /* WLBuildingNode.m in Sources */,
 				84832543187D52BB00365C6F /* WLMyScene.m in Sources */,
 				84832536187D52BB00365C6F /* main.m in Sources */,
 				8483253A187D52BB00365C6F /* WLAppDelegate.m in Sources */,
+				8483256D187D569100365C6F /* WLLayerdNode.m in Sources */,
+				84832570187D589E00365C6F /* WLButtonNode.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -477,6 +539,7 @@
 				8483255F187D52BB00365C6F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		84832560187D52BB00365C6F /* Build configuration list for PBXNativeTarget "WuLinTests" */ = {
 			isa = XCConfigurationList;
@@ -485,6 +548,7 @@
 				84832562187D52BB00365C6F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

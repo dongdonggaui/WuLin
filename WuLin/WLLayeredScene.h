@@ -8,6 +8,17 @@
 
 #import <SpriteKit/SpriteKit.h>
 
+typedef enum : uint8_t {
+	WLSceneLayerGame,
+    WLSceneLayerHUD,
+	kWLSceneLayerCount
+} WLSceneLayer;
+
 @interface WLLayeredScene : SKScene
+
+@property (nonatomic, readonly) SKNode *playWindow;                  // root node to which all game renderables are attached
+
+/* All sprites in the scene should be added through this method to ensure they are placed in the correct world layer. */
+- (void)addNode:(SKNode *)node atWorldLayer:(WLSceneLayer)layer;
 
 @end

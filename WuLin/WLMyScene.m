@@ -10,6 +10,7 @@
 
 @implementation WLMyScene
 
+#pragma mark - Init
 -(id)initWithSize:(CGSize)size {    
     if (self = [super initWithSize:size]) {
         /* Setup your scene here */
@@ -28,6 +29,7 @@
     return self;
 }
 
+#pragma mark - Touches
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     /* Called when a touch begins */
     

@@ -14,7 +14,7 @@
 @property (nonatomic, readonly) BOOL isBuilding;
 
 
-+ (instancetype)buildingWithShadowImageName:(NSString *)imageName xTileCount:(NSInteger)xTileCount yTileCount:(NSInteger)yTileCount;
++ (instancetype)buildingWithShadowImageName:(NSString *)imageName xTileCount:(int)xTileCount yTileCount:(int)yTileCount;
 
 - (void)cancelBuild;
 - (void)cofrimBuild;

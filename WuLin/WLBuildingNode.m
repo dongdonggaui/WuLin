@@ -21,7 +21,7 @@ extern const float kGridHeight;
 @implementation WLBuildingNode
 
 #pragma mark - Desigated Init
-+ (instancetype)buildingWithShadowImageName:(NSString *)imageName xTileCount:(NSInteger)xTileCount yTileCount:(NSInteger)yTileCount
++ (instancetype)buildingWithShadowImageName:(NSString *)imageName xTileCount:(int)xTileCount yTileCount:(int)yTileCount
 {
     if (0 == xTileCount || 0 == yTileCount) {
         return nil;
@@ -47,7 +47,7 @@ extern const float kGridHeight;
 {
     _physicalCoord = physicalCoord;
     SKSpriteNode *parentNode = (SKSpriteNode *)self.parent.parent.parent;
-    CGPoint position = [self convertCoordinateToScene:physicalCoord offset:CGPointMake(parentNode.size.width / 2 - kGridHeight, 0)];
+    CGPoint position = [self convertCoordinateToScene:physicalCoord offset:CGPointMake(0, 0)];
     self.position = CGPointMake(position.x, parentNode.size.height - position.y);
 }
 

@@ -7,6 +7,7 @@
 //
 
 #import <SpriteKit/SpriteKit.h>
+#import "WLGrapicsUtilitites.h"
 
 typedef enum : uint8_t {
 	WLWorldLayerGround = 0,

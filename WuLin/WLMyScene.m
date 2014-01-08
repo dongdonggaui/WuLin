@@ -30,7 +30,8 @@
 -(id)initWithSize:(CGSize)size {    
     if (self = [super initWithSize:size]) {
         /* Setup your scene here */
-        WLMenPai *world = [WLMenPai spriteNodeWithImageNamed:@"test_bg"];
+        self.name = @"MyScene";
+        WLMenPai *world = [WLMenPai spriteNodeWithImageNamed:@"test_menpai_base"];
         world.userInteractionEnabled = YES;
         world.anchorPoint = CGPointZero;
         self.world = world;
@@ -56,7 +57,7 @@
     WLBuildingNode *building = [WLBuildingNode buildingWithShadowImageName:@"test_selected" xTileCount:2 yTileCount:2];
     building.userInteractionEnabled = YES;
     building.size = CGSizeMake(building.size.width, building.size.height);
-    [self.world addNode:building atWorldLayer:WLWorldLayerAboveCharacter];
+    [self.world addNode:building atWorldLayer:WLWorldLayerBelowCharacter];
     [building moveToPointInMathCoord:CGPointMake(1, 1)];
     NSLog(@"(x, y) = %@", NSStringFromCGPoint(building.position));
 }

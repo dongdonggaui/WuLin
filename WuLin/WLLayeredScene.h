@@ -9,7 +9,7 @@
 #import <SpriteKit/SpriteKit.h>
 
 typedef enum : uint8_t {
-	WLSceneLayerGame,
+	WLSceneLayerGame = 0,
     WLSceneLayerHUD,
 	kWLSceneLayerCount
 } WLSceneLayer;

@@ -16,7 +16,8 @@ const float kGridHeight = 32.f;
 #pragma mark - Public Methods
 - (CGPoint)convertCoordinateToScene:(CGPoint)tileCoordinate offset:(CGPoint)offset
 {
-    return CGPointMake(kGridWidth / 2 * (tileCoordinate.x - tileCoordinate.y + 1) + offset.x, kGridHeight / 2 * (tileCoordinate.x + tileCoordinate.y + 1) + offset.y);
+    NSLog(@"self.scale = %f", self.parent.parent.parent.xScale);
+    return CGPointMake((kGridWidth * self.parent.parent.parent.xScale / 2 * (tileCoordinate.x - tileCoordinate.y + 1) + offset.x), (kGridHeight * self.parent.parent.parent.yScale / 2 * (tileCoordinate.x + tileCoordinate.y + 1) + offset.y));
 }
 
 #pragma mark - To be override

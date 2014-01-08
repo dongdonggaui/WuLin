@@ -34,7 +34,7 @@ const NSString *kWLPlayWindowKey = @"kWLPlayWindowKey";
         self.layers = layers;
         for (int i = 0; i < kWLSceneLayerCount; i++) {
             SKNode *layer = [[SKNode alloc] init];
-            layer.zPosition = i - kWLSceneLayerCount;
+            layer.zPosition = i;
             [world addChild:layer];
             [(NSMutableArray *)layers addObject:layer];
         }

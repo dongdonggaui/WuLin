@@ -7,6 +7,7 @@
 //
 
 #import "WLBuildingNode.h"
+#import "WLGridUtility.h"
 
 extern const float kGridWidth;
 extern const float kGridHeight;
@@ -47,7 +48,7 @@ extern const float kGridHeight;
 {
     _physicalCoord = physicalCoord;
     SKSpriteNode *parentNode = (SKSpriteNode *)self.parent.parent.parent;
-    CGPoint position = [self convertCoordinateToScene:physicalCoord offset:CGPointMake(0, 0)];
+    CGPoint position = [WLGridUtility convertCoordinateToScene:physicalCoord withZoomRate:self.xScale offset:CGPointMake(0, 0)];
     self.position = CGPointMake(position.x, parentNode.size.height - position.y);
 }
 

@@ -12,4 +12,8 @@ extern const NSString *WLButtonNodeDidTappedNotification;
 
 @interface WLButtonNode : SKSpriteNode
 
+@property (nonatomic) NSString *title;
+@property (nonatomic) NSString *selectedTitle;
+@property (nonatomic, getter = isSelected) BOOL selected;
+
 @end

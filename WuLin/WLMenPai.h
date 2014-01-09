@@ -6,8 +6,8 @@
 //  Copyright (c) 2014年 huangluyang. All rights reserved.
 //
 
-#import "WLLayerdNode.h"
+#import "WLGridNode.h"
 
-@interface WLMenPai : WLLayerdNode
+@interface WLMenPai : WLGridNode
 
 @end

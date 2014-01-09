@@ -6,11 +6,12 @@
 //  Copyright (c) 2014年 huangluyang. All rights reserved.
 //
 
-#import <SpriteKit/SpriteKit.h>
+#import "WLLayerdNode.h"
 
-@interface WLGridNode : SKSpriteNode
+@interface WLGridNode : WLLayerdNode
 
 - (void)moveToPointInMathCoord:(CGPoint)point;
-- (CGPoint)convertCoordinateToScene:(CGPoint)tileCoordinate offset:(CGPoint)offset;
+- (void)showGrid;
+- (void)hideGrid;
 
 @end

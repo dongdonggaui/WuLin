@@ -11,6 +11,7 @@
 #import "WLButtonNode.h"
 #import "WLBuildingNode.h"
 #import "WLGridUtility.h"
+#import "JSTileMap.h"
 
 @interface WLMyScene ()
 

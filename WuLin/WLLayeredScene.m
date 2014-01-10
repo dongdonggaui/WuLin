@@ -8,12 +8,14 @@
 
 #import "WLLayeredScene.h"
 
-const NSString *kWLPlayWindowKey = @"kWLPlayWindowKey";
+const NSString *kWLWorldKey = @"kWLWorldKey";
 
 @interface WLLayeredScene ()
 
-@property (nonatomic) SKNode *playWindow;                    // root node to which all game renderables are attached
-@property (nonatomic) NSMutableArray *layers;           // different layer nodes within the world
+@property (nonatomic) SKNode * screen;
+@property (nonatomic) NSMutableArray * sceneLayers;
+
+- (void)addNode:(SKNode *)node atSceneLayer:(WLSceneLayer)sceneLayer;
 
 @end
 
@@ -27,27 +29,29 @@ const NSString *kWLPlayWindowKey = @"kWLPlayWindowKey";
         
         self.backgroundColor = [SKColor colorWithRed:0.15 green:0.15 blue:0.3 alpha:1.0];
         
-        SKNode *world = [[SKNode alloc] init];
-        self.playWindow = world;
-        [world setName:(NSString *)kWLPlayWindowKey];
-        NSMutableArray *layers = [NSMutableArray arrayWithCapacity:kWLSceneLayerCount];
-        self.layers = layers;
+        SKNode *screen = [[SKNode alloc] init];
+        screen.name = @"screen";
+        self.screen = screen;
+        NSMutableArray *sceneLayers = [NSMutableArray arrayWithCapacity:kWLSceneLayerCount];
+        self.sceneLayers = sceneLayers;
         for (int i = 0; i < kWLSceneLayerCount; i++) {
             SKNode *layer = [[SKNode alloc] init];
             layer.zPosition = i;
-            [world addChild:layer];
-            [(NSMutableArray *)layers addObject:layer];
+            [screen addChild:layer];
+            [sceneLayers addObject:layer];
         }
-        
-        [self addChild:world];
+        [self addChild:screen];
     }
     return self;
 }
 
 #pragma mark - Puclic Methods
-- (void)addNode:(SKNode *)node atWorldLayer:(WLSceneLayer)layer {
-    SKNode *layerNode = self.layers[layer];
+
+- (void)addNode:(SKNode *)node atSceneLayer:(WLSceneLayer)sceneLayer
+{
+    SKNode *layerNode = self.sceneLayers[sceneLayer];
     [layerNode addChild:node];
 }
+
 
 @end

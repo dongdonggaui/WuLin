@@ -32,7 +32,7 @@ const float kGridHeight = 32.f;
             label.fontSize = 12;
             label.verticalAlignmentMode = SKLabelHorizontalAlignmentModeCenter;
             [node addChild:label];
-            [theNode addNode:node atWorldLayer:WLWorldLayerGrid];
+//            [theNode addNode:node atWorldLayer:WLWorldLayerGrid];
         }
     }
 }

@@ -15,7 +15,7 @@
 
 @interface WLMyScene ()
 
-@property (nonatomic) WLMenPai *world;
+@property (nonatomic) WLMenPai *menpai;
 
 @end
 
@@ -23,7 +23,6 @@
 
 - (void)dealloc
 {
-    self.world = nil;
     
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
@@ -41,22 +40,22 @@
 {
     [super didMoveToView:view];
     
-    WLMenPai *world = [WLMenPai spriteNodeWithImageNamed:@"test_menpai_base"];
+    WLMenPai *world = [WLMenPai spriteNodeWithColor:[SKColor clearColor] size:CGSizeMake(600, 400)];
     world.userInteractionEnabled = YES;
-    self.world = world;
-    [self addNode:world  atWorldLayer:WLSceneLayerGame];
+    self.menpai = world;
+    [self addNode:world  atSceneLayer:WLSceneLayerWorld];
     
     WLButtonNode *button = [WLButtonNode spriteNodeWithColor:[SKColor yellowColor] size:CGSizeMake(100, 40)];
     button.name = @"button";
     button.userInteractionEnabled = YES;
     button.position = CGPointMake(10 + button.size.width / 2, self.size.height - 30 - button.size.height / 2);
-    [self addNode:button atWorldLayer:WLSceneLayerHUD];
+    [self addNode:button atSceneLayer:WLSceneLayerTop];
     
     WLButtonNode *button1 = [WLButtonNode spriteNodeWithColor:[SKColor greenColor] size:CGSizeMake(100, 40)];
     button1.name = @"button1";
     button1.userInteractionEnabled = YES;
     button1.position = CGPointMake(10 + button1.size.width / 2, self.size.height - 30 - button1.size.height / 2 - button.size.height - 10);
-    [self addNode:button1 atWorldLayer:WLSceneLayerHUD];
+    [self addNode:button1 atSceneLayer:WLSceneLayerTop];
     
     WLButtonNode *button2 = [WLButtonNode spriteNodeWithColor:[SKColor blueColor] size:CGSizeMake(100, 40)];
     button2.name = @"button2";
@@ -64,7 +63,7 @@
     button2.selectedTitle = @"隐藏网格";
     button2.userInteractionEnabled = YES;
     button2.position = CGPointMake(10 + button2.size.width / 2, self.size.height - 30 - button2.size.height / 2 - button.size.height - 10 - button1.size.height - 10);
-    [self addNode:button2 atWorldLayer:WLSceneLayerHUD];
+    [self addNode:button2 atSceneLayer:WLSceneLayerTop];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didReceiveButtonNotification:) name:(NSString *)WLButtonNodeDidTappedNotification object:nil];
 }
@@ -76,23 +75,45 @@
         WLBuildingNode *building = [WLBuildingNode buildingWithShadowImageName:@"test_selected" xTileCount:2 yTileCount:2];
         building.userInteractionEnabled = YES;
         building.size = CGSizeMake(building.size.width, building.size.height);
-        [self.world addNode:building atWorldLayer:WLWorldLayerBelowCharacter];
+        [self.menpai addNode:building atWorldLayer:WLWorldLayerAboveGrid];
         [building moveToPointInMathCoord:CGPointMake(1, 1)];
         NSLog(@"(x, y) = %@", NSStringFromCGPoint(building.position));
     } else if ([button.name isEqualToString:@"button1"]) {
-        [WLGridUtility generateTilesInNode:self.world withGridWidth:9 gridHeight:9];
+        SKSpriteNode *node = [SKSpriteNode spriteNodeWithColor:[SKColor blueColor] size:self.size];
+        node.position = CGPointMake(node.size.width / 2, node.size.width / 2);
+        node.alpha = 0;
+        SKAction *action = [SKAction fadeInWithDuration:0.5];
+        [self addNode:node atSceneLayer:WLSceneLayerHUD];
+        [node runAction:action];
+        
     } else if ([button.name isEqualToString:@"button2"]) {
         if (button.isSelected) {
-            [self.world showGrid];
+//            [self.world showGrid];
         } else {
-            [self.world hideGrid];
+//            [self.world hideGrid];
         }
     }
 }
 
+
+
+#pragma mark - Private Methods
+
+
 #pragma mark - Touches
--(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    /* Called when a touch begins */
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+ 
+}
+
+- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
+{
+
+}
+
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    
 }
 
 -(void)update:(CFTimeInterval)currentTime {

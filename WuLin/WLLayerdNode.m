@@ -31,7 +31,27 @@
     game.layers = layers;
     for (int i = 0; i < kWLWorldLayerCount; i++) {
         SKNode *layer = [[SKNode alloc] init];
-        layer.zPosition = i;
+        layer.zPosition = i - kWLWorldLayerCount;
+        [world addChild:layer];
+        [(NSMutableArray *)layers addObject:layer];
+    }
+    
+    [game addChild:world];
+    
+    return game;
+}
+
++ (instancetype)spriteNodeWithColor:(UIColor *)color size:(CGSize)size
+{
+    WLLayerdNode *game = [super spriteNodeWithColor:color size:size];
+    SKNode *world = [[SKNode alloc] init];
+    [world setName:@"world"];
+    game.world = world;
+    NSMutableArray *layers = [NSMutableArray arrayWithCapacity:kWLWorldLayerCount];
+    game.layers = layers;
+    for (int i = 0; i < kWLWorldLayerCount; i++) {
+        SKNode *layer = [[SKNode alloc] init];
+        layer.zPosition = i - kWLWorldLayerCount;
         [world addChild:layer];
         [(NSMutableArray *)layers addObject:layer];
     }
@@ -47,6 +67,7 @@
     [layerNode addChild:node];
 }
 
+
 #pragma mark - Private Methods
 - (void)handlePanTranslation:(CGPoint)translation
 {
@@ -56,6 +77,7 @@
     position.y = MIN(position.y , 0);
     position.y = MAX(position.y, self.scene.size.height - self.size.height);
     self.position = position;
+    DLog(@"self.postion = %@", NSStringFromCGPoint(self.position));
 }
 
 #pragma mark - Touches

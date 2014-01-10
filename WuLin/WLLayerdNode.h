@@ -10,12 +10,14 @@
 #import "WLGrapicsUtilitites.h"
 
 typedef enum : uint8_t {
-	WLWorldLayerGround = 0,
+	WLWorldLayerBackground = 0,
+    WLWorldLayerBelowGrid,
     WLWorldLayerGrid,
-	WLWorldLayerBelowCharacter,
-	WLWorldLayerCharacter,
-	WLWorldLayerAboveCharacter,
-	WLWorldLayerTop,
+    WLWorldLayerAboveGrid,
+    WLWorldLayerBelowHero,
+    WLWorldLayerHero,
+    WLWorldLayerAboveHero,
+    WLWorldLayerTop,
 	kWLWorldLayerCount
 } WLWorldLayer;
 

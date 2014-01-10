@@ -19,9 +19,9 @@
 #pragma mark - Setters & Getters
 - (void)setShowGrid:(BOOL)showGrid
 {
-    _showGrid = showGrid;
-    SKNode *node = self.layers[WLWorldLayerGrid];
-    node.hidden = !showGrid;
+//    _showGrid = showGrid;
+//    SKNode *node = self.layers[WLWorldLayerGrid];
+//    node.hidden = !showGrid;
 }
 
 #pragma mark - Public Methods

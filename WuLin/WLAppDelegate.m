@@ -13,6 +13,9 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    [[UIApplication sharedApplication] setStatusBarHidden:YES];
+    [[UINavigationBar appearance] setBackgroundImage:[[UIImage imageNamed:@"nav_bg"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 127, 0, 128) resizingMode:UIImageResizingModeStretch] forBarMetrics:UIBarMetricsLandscapePhone];
+    
     return YES;
 }
 							

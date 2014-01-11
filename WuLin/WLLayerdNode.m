@@ -12,9 +12,7 @@
 
 @property (nonatomic) SKNode *world;                    // root node to which all game renderables are attached
 @property (nonatomic) NSMutableArray *layers;           // different layer nodes within the world
-@property (nonatomic) CGFloat velocity;                 // use for pinch calculate rate
 @property (nonatomic) CGFloat currentRate;              // use for pinch record current pinch rate
-@property (nonatomic) CGPoint pinchCenter;              // use for pinch keep center
 
 @end
 
@@ -35,6 +33,7 @@
         [world addChild:layer];
         [(NSMutableArray *)layers addObject:layer];
     }
+    game.currentRate = 1;
     
     [game addChild:world];
     
@@ -57,6 +56,7 @@
     }
     
     [game addChild:world];
+    game.currentRate = 1;
     
     return game;
 }
@@ -77,25 +77,13 @@
     position.y = MIN(position.y , 0);
     position.y = MAX(position.y, self.scene.size.height - self.size.height);
     self.position = position;
-    DLog(@"self.postion = %@", NSStringFromCGPoint(self.position));
 }
 
 #pragma mark - Touches
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
     if (2 == touches.count) {
-        NSEnumerator *setEnumerator = [touches objectEnumerator];
-        NSMutableArray *arr = [NSMutableArray arrayWithCapacity:2];
-        id value = nil;
-        while (value = [setEnumerator nextObject]) {
-            [arr addObject:value];
-        }
-        UITouch *touch1 = [arr objectAtIndex:0];
-        UITouch *touch2 = [arr objectAtIndex:1];
-        CGPoint position1 = [touch1 locationInNode:self];
-        CGPoint position2 = [touch2 locationInNode:self];
-        self.velocity = WLDistanceBetweenPoints(position1, position2);
-        self.pinchCenter = CGPointMake((position1.x + position2.x) / 2, (position1.y + position2.y) / 2);
+        
     }
 }
 
@@ -118,33 +106,39 @@
         UITouch *touch2 = [arr objectAtIndex:1];
         CGPoint position1 = [touch1 locationInNode:self];
         CGPoint position2 = [touch2 locationInNode:self];
-        
-        // pinch center keep center
-        CGPoint center = CGPointMake((position1.x + position2.x) / 2, (position1.y + position2.y) / 2);
-        CGPoint translation = CGPointMake(center.x - self.pinchCenter.x, center.y - self.pinchCenter.y);
-        [self handlePanTranslation:translation];
+        CGPoint previousPosition1 = [touch1 previousLocationInNode:self];
+        CGPoint previousPosition2 = [touch2 previousLocationInNode:self];
         
         // calculate pinch rate and execute pinch
-        CGFloat velocity = WLDistanceBetweenPoints(position1, position2);
-        CGFloat rate = self.currentRate + (velocity - self.velocity) / (self.velocity * 10);
+        CGFloat distance = WLDistanceBetweenPoints(position1, position2);
+        CGFloat preDistance = WLDistanceBetweenPoints(previousPosition1, previousPosition2);
+        
+        CGFloat rate = self.currentRate + (distance - preDistance) / preDistance;
         CGFloat minWidth = self.scene.size.width;
         CGFloat minHeight = self.scene.size.height;
-        CGFloat minWidthRate = minWidth / 600.f;
-        CGFloat minHeightRate = minHeight / 400.f;
+        CGFloat minWidthRate = minWidth / 800.f;
+        CGFloat minHeightRate = minHeight / 416.f;
         rate = MIN(rate, 1.5);
         rate = MAX(rate, minWidthRate);
         rate = MAX(rate, minHeightRate);
+        
+        CGSize beforeSize = self.size;
         self.xScale = rate;
         self.yScale = rate;
+        CGSize afterSize = self.size;
+        
         self.currentRate = rate;
+        
         // garuntee edge from out of screen
+        CGFloat xDelta = (afterSize.width - beforeSize.width) / 2;
+        CGFloat yDelta = (afterSize.height - beforeSize.height) / 2;
         CGPoint currentPosition = self.position;
-        if (currentPosition.x + self.size.width < minWidth) {
-            currentPosition.x = minWidth - self.size.width;
-        }
-        if (currentPosition.y + self.size.height < minHeight) {
-            currentPosition.y = minHeight - self.size.height;
-        }
+        currentPosition.x -= xDelta;
+        currentPosition.y -= yDelta;
+        currentPosition.x = MIN(currentPosition.x, 0);
+        currentPosition.x = MAX(currentPosition.x, self.scene.size.width - self.size.width);
+        currentPosition.y = MIN(currentPosition.y, 0);
+        currentPosition.y = MAX(currentPosition.y, self.scene.size.height - self.size.height);
         self.position = currentPosition;
     }
 }

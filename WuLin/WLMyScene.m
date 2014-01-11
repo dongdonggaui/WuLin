@@ -12,6 +12,8 @@
 #import "WLBuildingNode.h"
 #import "WLGridUtility.h"
 #import "JSTileMap.h"
+#import "WLNavigationNode.h"
+#import "WLSelectorViewNode.h"
 
 @interface WLMyScene ()
 
@@ -79,12 +81,13 @@
         [building moveToPointInMathCoord:CGPointMake(1, 1)];
         NSLog(@"(x, y) = %@", NSStringFromCGPoint(building.position));
     } else if ([button.name isEqualToString:@"button1"]) {
-        SKSpriteNode *node = [SKSpriteNode spriteNodeWithColor:[SKColor blueColor] size:self.size];
-        node.position = CGPointMake(node.size.width / 2, node.size.width / 2);
-        node.alpha = 0;
-        SKAction *action = [SKAction fadeInWithDuration:0.5];
-        [self addNode:node atSceneLayer:WLSceneLayerHUD];
-        [node runAction:action];
+        WLSelectorViewNode *node = [WLSelectorViewNode spriteNodeWithColor:[SKColor blueColor] size:self.size];
+        WLNavigationNode *nav = [[WLNavigationNode alloc] initWithRootNode:node size:self.size];
+        nav.alpha = 0;
+        SKAction *action = [SKAction fadeInWithDuration:0.25];
+        [self addNode:nav atSceneLayer:WLSceneLayerHUD];
+        [nav runAction:action];
+        
         
     } else if ([button.name isEqualToString:@"button2"]) {
         if (button.isSelected) {
@@ -94,8 +97,6 @@
         }
     }
 }
-
-
 
 #pragma mark - Private Methods
 

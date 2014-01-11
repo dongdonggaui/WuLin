@@ -53,5 +53,14 @@ const NSString *kWLWorldKey = @"kWLWorldKey";
     [layerNode addChild:node];
 }
 
+- (WLAppDelegate *)appDelegate
+{
+    return (WLAppDelegate *)[[UIApplication sharedApplication] delegate];
+}
+
+- (UIViewController *)viewController
+{
+    return [self appDelegate].window.rootViewController;
+}
 
 @end

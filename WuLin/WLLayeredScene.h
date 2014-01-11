@@ -7,6 +7,7 @@
 //
 
 #import <SpriteKit/SpriteKit.h>
+#import "WLAppDelegate.h"
 
 typedef enum : uint8_t {
 	WLSceneLayerWorld = 0,
@@ -24,5 +25,7 @@ typedef enum : uint8_t {
 
 /* All sprites in the scene should be added through this method to ensure they are placed in the correct world layer. */
 - (void)addNode:(SKNode *)node atSceneLayer:(WLSceneLayer)sceneLayer;
+- (WLAppDelegate *)appDelegate;
+- (UIViewController *)viewController;
 
 @end

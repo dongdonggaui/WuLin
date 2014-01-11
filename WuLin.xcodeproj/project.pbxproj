@@ -7,8 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0604B5281880D7F200B434AE /* WLNavigationNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 0604B5271880D7F200B434AE /* WLNavigationNode.m */; };
+		0604B52B1880D9BF00B434AE /* WLBarButtonItemNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 0604B52A1880D9BF00B434AE /* WLBarButtonItemNode.m */; };
+		0604B52E1880DA2600B434AE /* WLNavigationBarNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 0604B52D1880DA2600B434AE /* WLNavigationBarNode.m */; };
+		0604B5301880E29900B434AE /* nav_back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0604B52F1880E29900B434AE /* nav_back@2x.png */; };
+		0604B5331880EDAD00B434AE /* WLNavigationViewNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 0604B5321880EDAD00B434AE /* WLNavigationViewNode.m */; };
+		0604B5361880F16C00B434AE /* WLSelectorViewNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 0604B5351880F16C00B434AE /* WLSelectorViewNode.m */; };
+		0604B5381881375200B434AE /* nav_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 0604B5371881375200B434AE /* nav_bg.png */; };
+		0604B53B1881383100B434AE /* WLScrollViewNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 0604B53A1881383100B434AE /* WLScrollViewNode.m */; };
 		060E4B9A187D8ED40011FC22 /* test_menpai_base.png in Resources */ = {isa = PBXBuildFile; fileRef = 060E4B99187D8ED40011FC22 /* test_menpai_base.png */; };
 		060E4B9E187D906B0011FC22 /* WLGrapicsUtilitites.m in Sources */ = {isa = PBXBuildFile; fileRef = 060E4B9D187D906B0011FC22 /* WLGrapicsUtilitites.m */; };
+		06113025188057DB00C98051 /* WLSelectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06113024188057DB00C98051 /* WLSelectorViewController.m */; };
+		06113027188059C900C98051 /* nav_close@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 06113026188059C900C98051 /* nav_close@2x.png */; };
+		0611302E1880647D00C98051 /* UINavigationBar+WuLin.m in Sources */ = {isa = PBXBuildFile; fileRef = 0611302D1880647D00C98051 /* UINavigationBar+WuLin.m */; };
 		0619132F187EEF590015A5EC /* WLTileset.m in Sources */ = {isa = PBXBuildFile; fileRef = 0619132E187EEF590015A5EC /* WLTileset.m */; };
 		06191333187EFBBF0015A5EC /* WLTileMapBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 06191332187EFBBF0015A5EC /* WLTileMapBuilder.m */; };
 		06191336187F02F00015A5EC /* isometric_grass_and_water.png in Resources */ = {isa = PBXBuildFile; fileRef = 06191334187F02F00015A5EC /* isometric_grass_and_water.png */; };
@@ -58,10 +69,29 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0604B5261880D7F200B434AE /* WLNavigationNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLNavigationNode.h; sourceTree = "<group>"; };
+		0604B5271880D7F200B434AE /* WLNavigationNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WLNavigationNode.m; sourceTree = "<group>"; };
+		0604B5291880D9BF00B434AE /* WLBarButtonItemNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLBarButtonItemNode.h; sourceTree = "<group>"; };
+		0604B52A1880D9BF00B434AE /* WLBarButtonItemNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WLBarButtonItemNode.m; sourceTree = "<group>"; };
+		0604B52C1880DA2600B434AE /* WLNavigationBarNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLNavigationBarNode.h; sourceTree = "<group>"; };
+		0604B52D1880DA2600B434AE /* WLNavigationBarNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WLNavigationBarNode.m; sourceTree = "<group>"; };
+		0604B52F1880E29900B434AE /* nav_back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav_back@2x.png"; sourceTree = "<group>"; };
+		0604B5311880EDAD00B434AE /* WLNavigationViewNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLNavigationViewNode.h; sourceTree = "<group>"; };
+		0604B5321880EDAD00B434AE /* WLNavigationViewNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WLNavigationViewNode.m; sourceTree = "<group>"; };
+		0604B5341880F16C00B434AE /* WLSelectorViewNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLSelectorViewNode.h; sourceTree = "<group>"; };
+		0604B5351880F16C00B434AE /* WLSelectorViewNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WLSelectorViewNode.m; sourceTree = "<group>"; };
+		0604B5371881375200B434AE /* nav_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nav_bg.png; sourceTree = "<group>"; };
+		0604B5391881383100B434AE /* WLScrollViewNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLScrollViewNode.h; sourceTree = "<group>"; };
+		0604B53A1881383100B434AE /* WLScrollViewNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WLScrollViewNode.m; sourceTree = "<group>"; };
 		060E4B99187D8ED40011FC22 /* test_menpai_base.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test_menpai_base.png; sourceTree = "<group>"; };
 		060E4B9C187D906B0011FC22 /* WLGrapicsUtilitites.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLGrapicsUtilitites.h; sourceTree = "<group>"; };
 		060E4B9D187D906B0011FC22 /* WLGrapicsUtilitites.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WLGrapicsUtilitites.m; sourceTree = "<group>"; };
 		060E4BA0187D90D30011FC22 /* CommonHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonHeader.h; sourceTree = "<group>"; };
+		06113023188057DB00C98051 /* WLSelectorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLSelectorViewController.h; sourceTree = "<group>"; };
+		06113024188057DB00C98051 /* WLSelectorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WLSelectorViewController.m; sourceTree = "<group>"; };
+		06113026188059C900C98051 /* nav_close@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav_close@2x.png"; sourceTree = "<group>"; };
+		0611302C1880647D00C98051 /* UINavigationBar+WuLin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationBar+WuLin.h"; sourceTree = "<group>"; };
+		0611302D1880647D00C98051 /* UINavigationBar+WuLin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationBar+WuLin.m"; sourceTree = "<group>"; };
 		0619132D187EEF590015A5EC /* WLTileset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLTileset.h; sourceTree = "<group>"; };
 		0619132E187EEF590015A5EC /* WLTileset.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WLTileset.m; sourceTree = "<group>"; };
 		06191331187EFBBF0015A5EC /* WLTileMapBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLTileMapBuilder.h; sourceTree = "<group>"; };
@@ -195,6 +225,9 @@
 		841C5E4A187D750000FE3ABD /* TestPNGs */ = {
 			isa = PBXGroup;
 			children = (
+				0604B5371881375200B434AE /* nav_bg.png */,
+				0604B52F1880E29900B434AE /* nav_back@2x.png */,
+				06113026188059C900C98051 /* nav_close@2x.png */,
 				06191334187F02F00015A5EC /* isometric_grass_and_water.png */,
 				06191345187F0D090015A5EC /* isometric_grass_and_water.tmx */,
 				06191343187F0A700015A5EC /* test_ground.tmx */,
@@ -293,6 +326,10 @@
 				8483253B187D52BB00365C6F /* Main.storyboard */,
 				8483253E187D52BB00365C6F /* WLViewController.h */,
 				8483253F187D52BB00365C6F /* WLViewController.m */,
+				06113023188057DB00C98051 /* WLSelectorViewController.h */,
+				06113024188057DB00C98051 /* WLSelectorViewController.m */,
+				0611302C1880647D00C98051 /* UINavigationBar+WuLin.h */,
+				0611302D1880647D00C98051 /* UINavigationBar+WuLin.m */,
 			);
 			name = Root;
 			sourceTree = "<group>";
@@ -330,6 +367,18 @@
 				84832572187D590900365C6F /* WLBuildingNode.m */,
 				8483256E187D589E00365C6F /* WLButtonNode.h */,
 				8483256F187D589E00365C6F /* WLButtonNode.m */,
+				0604B5261880D7F200B434AE /* WLNavigationNode.h */,
+				0604B5271880D7F200B434AE /* WLNavigationNode.m */,
+				0604B5311880EDAD00B434AE /* WLNavigationViewNode.h */,
+				0604B5321880EDAD00B434AE /* WLNavigationViewNode.m */,
+				0604B5341880F16C00B434AE /* WLSelectorViewNode.h */,
+				0604B5351880F16C00B434AE /* WLSelectorViewNode.m */,
+				0604B5391881383100B434AE /* WLScrollViewNode.h */,
+				0604B53A1881383100B434AE /* WLScrollViewNode.m */,
+				0604B52C1880DA2600B434AE /* WLNavigationBarNode.h */,
+				0604B52D1880DA2600B434AE /* WLNavigationBarNode.m */,
+				0604B5291880D9BF00B434AE /* WLBarButtonItemNode.h */,
+				0604B52A1880D9BF00B434AE /* WLBarButtonItemNode.m */,
 			);
 			name = Sprites;
 			sourceTree = "<group>";
@@ -417,9 +466,12 @@
 				84832547187D52BB00365C6F /* Images.xcassets in Resources */,
 				841C5E48187D74FB00FE3ABD /* test_restroom.png in Resources */,
 				841C5E46187D74FB00FE3ABD /* test_bg.png in Resources */,
+				0604B5301880E29900B434AE /* nav_back@2x.png in Resources */,
 				841C5E49187D74FB00FE3ABD /* test_selected.png in Resources */,
 				06191344187F0A700015A5EC /* test_ground.tmx in Resources */,
 				84832545187D52BB00365C6F /* Spaceship.png in Resources */,
+				0604B5381881375200B434AE /* nav_bg.png in Resources */,
+				06113027188059C900C98051 /* nav_close@2x.png in Resources */,
 				8483253D187D52BB00365C6F /* Main.storyboard in Resources */,
 				06191336187F02F00015A5EC /* isometric_grass_and_water.png in Resources */,
 				841C5E47187D74FB00FE3ABD /* test_grid.png in Resources */,
@@ -442,21 +494,29 @@
 			buildActionMask = 2147483647;
 			files = (
 				84832540187D52BB00365C6F /* WLViewController.m in Sources */,
+				0604B52B1880D9BF00B434AE /* WLBarButtonItemNode.m in Sources */,
 				0619132F187EEF590015A5EC /* WLTileset.m in Sources */,
 				84832576187D59AF00365C6F /* WLGridNode.m in Sources */,
 				841C5E41187D6EC700FE3ABD /* WLMenPai.m in Sources */,
 				84832568187D55C500365C6F /* WLLayeredScene.m in Sources */,
 				84832573187D590900365C6F /* WLBuildingNode.m in Sources */,
+				0604B5361880F16C00B434AE /* WLSelectorViewNode.m in Sources */,
+				0604B53B1881383100B434AE /* WLScrollViewNode.m in Sources */,
+				0604B5331880EDAD00B434AE /* WLNavigationViewNode.m in Sources */,
 				0619133A187F03A10015A5EC /* JSTileMap.m in Sources */,
 				84832543187D52BB00365C6F /* WLMyScene.m in Sources */,
 				06191333187EFBBF0015A5EC /* WLTileMapBuilder.m in Sources */,
+				06113025188057DB00C98051 /* WLSelectorViewController.m in Sources */,
 				84832536187D52BB00365C6F /* main.m in Sources */,
+				0604B52E1880DA2600B434AE /* WLNavigationBarNode.m in Sources */,
 				84B55B4F187E526A006A5077 /* WLGridUtility.m in Sources */,
 				8483253A187D52BB00365C6F /* WLAppDelegate.m in Sources */,
 				8483256D187D569100365C6F /* WLLayerdNode.m in Sources */,
+				0604B5281880D7F200B434AE /* WLNavigationNode.m in Sources */,
 				060E4B9E187D906B0011FC22 /* WLGrapicsUtilitites.m in Sources */,
 				0619133D187F03AF0015A5EC /* LFCGzipUtility.m in Sources */,
 				84832570187D589E00365C6F /* WLButtonNode.m in Sources */,
+				0611302E1880647D00C98051 /* UINavigationBar+WuLin.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

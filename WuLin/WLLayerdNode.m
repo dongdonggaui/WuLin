@@ -67,18 +67,6 @@
     [layerNode addChild:node];
 }
 
-
-#pragma mark - Private Methods
-- (void)handlePanTranslation:(CGPoint)translation
-{
-    CGPoint position = CGPointMake(self.position.x + translation.x, self.position.y + translation.y);
-    position.x = MIN(position.x , 0);
-    position.x = MAX(self.scene.size.width - self.size.width, position.x);
-    position.y = MIN(position.y , 0);
-    position.y = MAX(position.y, self.scene.size.height - self.size.height);
-    self.position = position;
-}
-
 #pragma mark - Touches
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
@@ -96,12 +84,7 @@
         CGPoint translation = CGPointMake(currentPoint.x - previousPoint.x, currentPoint.y - previousPoint.y);
         [self handlePanTranslation:translation];
     } else if (2 == touches.count) {
-        NSEnumerator *setEnumerator = [touches objectEnumerator];
-        NSMutableArray *arr = [NSMutableArray arrayWithCapacity:2];
-        id value = nil;
-        while (value = [setEnumerator nextObject]) {
-            [arr addObject:value];
-        }
+        NSArray *arr = [touches allObjects];
         UITouch *touch1 = [arr objectAtIndex:0];
         UITouch *touch2 = [arr objectAtIndex:1];
         CGPoint position1 = [touch1 locationInNode:self];
@@ -116,8 +99,8 @@
         CGFloat rate = self.currentRate + (distance - preDistance) / preDistance;
         CGFloat minWidth = self.scene.size.width;
         CGFloat minHeight = self.scene.size.height;
-        CGFloat minWidthRate = minWidth / 800.f;
-        CGFloat minHeightRate = minHeight / 416.f;
+        CGFloat minWidthRate = minWidth / 1280.f;
+        CGFloat minHeightRate = minHeight / 656.f;
         rate = MIN(rate, 1.5);
         rate = MAX(rate, minWidthRate);
         rate = MAX(rate, minHeightRate);

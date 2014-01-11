@@ -1,13 +1,13 @@
 //
-//  WLNavigationViewNode.m
+//  WLStoreViewNode.h
 //  WuLin
 //
 //  Created by huangluyang on 14-1-11.
 //  Copyright (c) 2014年 huangluyang. All rights reserved.
 //
 
-#import "WLNavigationViewNode.h"
+#import "WLSelectorViewNode.h"
 
-@implementation WLNavigationViewNode
+@interface WLStoreViewNode : WLSelectorViewNode
 
 @end

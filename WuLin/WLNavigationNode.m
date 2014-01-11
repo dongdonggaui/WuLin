@@ -7,21 +7,21 @@
 //
 
 #import "WLNavigationNode.h"
-#import "WLNavigationViewNode.h"
+#import "WLSpriteViewNode.h"
 
 @interface WLNavigationNode () <WLBarButtonItemNodeDelegate>
 
 @property (nonatomic) NSMutableArray * childNodeStack;
-@property (nonatomic) WLNavigationViewNode *topNode;
+@property (nonatomic) WLSpriteViewNode *topNode;
 
 @end
 
 @implementation WLNavigationNode
 
-- (instancetype)initWithRootNode:(WLNavigationViewNode *)rootNode size:(CGSize)size
+- (instancetype)initWithRootNode:(WLSpriteViewNode *)rootNode size:(CGSize)size
 {
     NSAssert(rootNode != nil, @"root node could not be nil");
-    self = [self initWithColor:[SKColor yellowColor] size:size];
+    self = [self initWithColor:[SKColor grayColor] size:size];
     if (self) {
         
         NSMutableArray *nodeStack = [NSMutableArray arrayWithCapacity:2];
@@ -30,14 +30,15 @@
         self.anchorPoint = CGPointZero;
         self.topNode = rootNode;
         rootNode.navigationNode = self;
-        rootNode.position = CGPointMake(rootNode.size.width / 2, rootNode.size.height / 2);
         [self addChild:rootNode];
+        [[NSNotificationCenter defaultCenter] postNotificationName:(NSString *)kWLNodeDidAddToParentNotification object:rootNode];
         
         SKTexture *barTexture = [SKTexture textureWithImageNamed:@"nav_bg"];
         WLNavigationBarNode *navigationBar = [WLNavigationBarNode spriteNodeWithTexture:barTexture size:CGSizeMake(size.width, 44)];
         navigationBar.anchorPoint = CGPointZero;
         navigationBar.centerRect = CGRectMake(128, 29, 1, 1);
         navigationBar.position = CGPointMake(0, size.height - navigationBar.size.height);
+        navigationBar.zPosition = 1;
         self.navigationBar = navigationBar;
         [self addChild:navigationBar];
         
@@ -53,25 +54,30 @@
             rootNode.rightBarButtonItem.position = CGPointMake(self.navigationBar.size.width - rootNode.rightBarButtonItem.size.width - 5, (self.navigationBar.size.height - rootNode.rightBarButtonItem.size.height) / 2);
             [self.navigationBar addChild:rootNode.rightBarButtonItem];
         }
+        
+        self.alpha = 0;
     }
     
     return self;
 }
 
-- (void)pushNode:(WLNavigationViewNode *)node
+- (void)pushNode:(WLSpriteViewNode *)node
 {
     self.backItem.alpha = 1;
     
     [self.childNodeStack addObject:node];
     node.position = CGPointMake(self.size.width + node.size.width / 2, node.size.height / 2);
     [self addChild:node];
-    SKAction *move = [SKAction moveByX:-self.size.width y:0 duration:0.25];
+    SKAction *move = [SKAction moveByX:-self.size.width y:0 duration:0.18];
     SKAction *complete = [SKAction runBlock:^{
         self.topNode = node;
     }];
-    SKAction *fade = [SKAction fadeOutWithDuration:0.25];
-    [self.topNode runAction:fade];
+//    SKAction *fade = [SKAction fadeOutWithDuration:0.18];
+//    [self.topNode runAction:fade];
     [node runAction:[SKAction sequence:@[move, complete]]];
+    
+    SKAction *back = [SKAction moveByX:-self.size.width / 2 y:0 duration:0.18];
+    [self.topNode runAction:back];
 }
 
 - (void)popNode
@@ -80,15 +86,38 @@
     if (self.childNodeStack.count == 1) {
         self.backItem.alpha = 0;
     }
-    WLNavigationViewNode *node = [self.childNodeStack lastObject];
-    SKAction *move = [SKAction moveByX:self.size.width y:0 duration:0.25];
-    SKAction *fade = [SKAction fadeInWithDuration:0.25];
+    WLSpriteViewNode *node = [self.childNodeStack lastObject];
+    SKAction *move = [SKAction moveByX:self.size.width y:0 duration:0.18];
+//    SKAction *fade = [SKAction fadeInWithDuration:0.18];
     SKAction *complete = [SKAction runBlock:^{
         [self.topNode removeFromParent];
+        self.topNode = nil;
         self.topNode = node;
     }];
-    [self.topNode runAction:move];
-    [node runAction:[SKAction sequence:@[fade, complete]]];
+    SKAction *back = [SKAction moveByX:self.size.width / 2 y:0 duration:0.18];
+    [node runAction:back];
+    [self.topNode runAction:[SKAction sequence:@[move, complete]]];
+//    [node runAction:[SKAction sequence:@[fade, complete]]];
+}
+
+- (void)show
+{
+    SKAction *showAction = [SKAction fadeInWithDuration:0.1];
+    [self runAction:showAction withKey:@"show"];
+}
+
+- (void)dismiss
+{
+    SKAction *dismissAction = [SKAction fadeOutWithDuration:0.1];
+    SKAction *moveDown = [SKAction moveByX:0 y:-self.size.height duration:0.1]; /*需要先移走再移除，否则移除后node得不到响应*/
+    SKAction *moveAway = [SKAction removeFromParent];
+    [self runAction:[SKAction sequence:@[dismissAction, moveDown, moveAway]] withKey:@"dismiss"];
+}
+
+#pragma mark - Touches
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    DLog(@"touch began");
 }
 
 #pragma mark - bar button item delegate

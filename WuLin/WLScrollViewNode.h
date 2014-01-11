@@ -6,8 +6,10 @@
 //  Copyright (c) 2014年 huangluyang. All rights reserved.
 //
 
-#import <SpriteKit/SpriteKit.h>
+#import "WLSpriteNode.h"
 
-@interface WLScrollViewNode : SKSpriteNode
+@interface WLScrollViewNode : WLSpriteNode
+
+@property (nonatomic) CGSize contentSize;
 
 @end

@@ -21,6 +21,7 @@
         node.userInteractionEnabled = YES;
         
         WLBarButtonItemNode *item = [WLBarButtonItemNode spriteNodeWithImageNamed:@"nav_close" delegate:node];
+        item.name = @"nav_close";
         node.rightBarButtonItem = item;
     }
     
@@ -30,11 +31,9 @@
 #pragma mark - bar button delegate
 - (void)buttonItemDidTapped:(WLBarButtonItemNode *)buttonItem
 {
-    SKAction *action = [SKAction moveByX:0 y:-self.navigationNode.size.height duration:0.1];
-    SKAction *complete = [SKAction runBlock:^{
-        [self.navigationNode removeFromParent];
-    }];
-    [self.navigationNode runAction:[SKAction sequence:@[action, complete]]];
+    if ([buttonItem.name isEqualToString:@"nav_close"]) {
+        [self.navigationNode dismiss];
+    }
 }
 
 @end

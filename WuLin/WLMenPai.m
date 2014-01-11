@@ -31,22 +31,14 @@
 #pragma mark - Private Methods
 - (void)generalInit
 {
-//    self.anchorPoint = CGPointZero;
-    SKSpriteNode *background = [SKSpriteNode spriteNodeWithImageNamed:@"test_menpai_base"];
-    background.anchorPoint = CGPointZero;
-    [self addNode:background atWorldLayer:WLWorldLayerBackground];
-    JSTileMap *tileMap = [JSTileMap mapNamed:@"isometric_grass_and_water.tmx" withBaseZPosition:1 andZOrderModifier:0];
+    JSTileMap *tileMap = [JSTileMap mapNamed:@"test_ground.tmx" withBaseZPosition:1 andZOrderModifier:0];
     if (tileMap) {
-//        tileMap.zPosition = 1;
         tileMap.xScale = 0.5;
         tileMap.yScale = 0.5;
         [self addNode:tileMap atWorldLayer:WLWorldLayerBelowGrid];
-//        [self addChild:tileMap];
         self.size = tileMap.calculateAccumulatedFrame.size;
     }
     DLog(@"menpai.size = %@", NSStringFromCGSize(self.size));
-//    [WLGridUtility generateTilesInNode:self withGridWidth:9 gridHeight:9];
-//    [self hideGrid];
 }
 
 @end

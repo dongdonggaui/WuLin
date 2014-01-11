@@ -11,10 +11,13 @@
 		0604B52B1880D9BF00B434AE /* WLBarButtonItemNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 0604B52A1880D9BF00B434AE /* WLBarButtonItemNode.m */; };
 		0604B52E1880DA2600B434AE /* WLNavigationBarNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 0604B52D1880DA2600B434AE /* WLNavigationBarNode.m */; };
 		0604B5301880E29900B434AE /* nav_back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0604B52F1880E29900B434AE /* nav_back@2x.png */; };
-		0604B5331880EDAD00B434AE /* WLNavigationViewNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 0604B5321880EDAD00B434AE /* WLNavigationViewNode.m */; };
+		0604B5331880EDAD00B434AE /* WLSpriteViewNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 0604B5321880EDAD00B434AE /* WLSpriteViewNode.m */; };
 		0604B5361880F16C00B434AE /* WLSelectorViewNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 0604B5351880F16C00B434AE /* WLSelectorViewNode.m */; };
 		0604B5381881375200B434AE /* nav_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 0604B5371881375200B434AE /* nav_bg.png */; };
 		0604B53B1881383100B434AE /* WLScrollViewNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 0604B53A1881383100B434AE /* WLScrollViewNode.m */; };
+		0604B53E18813E8000B434AE /* WLSpriteNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 0604B53D18813E8000B434AE /* WLSpriteNode.m */; };
+		0604B5411881436800B434AE /* WLStoreViewNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 0604B5401881436800B434AE /* WLStoreViewNode.m */; };
+		0604B54318816EFE00B434AE /* test_ground.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 0604B54218816EFE00B434AE /* test_ground.tmx */; };
 		060E4B9A187D8ED40011FC22 /* test_menpai_base.png in Resources */ = {isa = PBXBuildFile; fileRef = 060E4B99187D8ED40011FC22 /* test_menpai_base.png */; };
 		060E4B9E187D906B0011FC22 /* WLGrapicsUtilitites.m in Sources */ = {isa = PBXBuildFile; fileRef = 060E4B9D187D906B0011FC22 /* WLGrapicsUtilitites.m */; };
 		06113025188057DB00C98051 /* WLSelectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06113024188057DB00C98051 /* WLSelectorViewController.m */; };
@@ -26,7 +29,6 @@
 		0619133A187F03A10015A5EC /* JSTileMap.m in Sources */ = {isa = PBXBuildFile; fileRef = 06191339187F03A10015A5EC /* JSTileMap.m */; };
 		0619133D187F03AF0015A5EC /* LFCGzipUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 0619133C187F03AF0015A5EC /* LFCGzipUtility.m */; };
 		06191340187F03F20015A5EC /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0619133F187F03F20015A5EC /* libz.dylib */; };
-		06191344187F0A700015A5EC /* test_ground.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 06191343187F0A700015A5EC /* test_ground.tmx */; };
 		06191346187F0D090015A5EC /* isometric_grass_and_water.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 06191345187F0D090015A5EC /* isometric_grass_and_water.tmx */; };
 		841C5E41187D6EC700FE3ABD /* WLMenPai.m in Sources */ = {isa = PBXBuildFile; fileRef = 841C5E40187D6EC700FE3ABD /* WLMenPai.m */; };
 		841C5E46187D74FB00FE3ABD /* test_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 841C5E42187D74FB00FE3ABD /* test_bg.png */; };
@@ -76,13 +78,18 @@
 		0604B52C1880DA2600B434AE /* WLNavigationBarNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLNavigationBarNode.h; sourceTree = "<group>"; };
 		0604B52D1880DA2600B434AE /* WLNavigationBarNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WLNavigationBarNode.m; sourceTree = "<group>"; };
 		0604B52F1880E29900B434AE /* nav_back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav_back@2x.png"; sourceTree = "<group>"; };
-		0604B5311880EDAD00B434AE /* WLNavigationViewNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLNavigationViewNode.h; sourceTree = "<group>"; };
-		0604B5321880EDAD00B434AE /* WLNavigationViewNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WLNavigationViewNode.m; sourceTree = "<group>"; };
+		0604B5311880EDAD00B434AE /* WLSpriteViewNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLSpriteViewNode.h; sourceTree = "<group>"; };
+		0604B5321880EDAD00B434AE /* WLSpriteViewNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WLSpriteViewNode.m; sourceTree = "<group>"; };
 		0604B5341880F16C00B434AE /* WLSelectorViewNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLSelectorViewNode.h; sourceTree = "<group>"; };
 		0604B5351880F16C00B434AE /* WLSelectorViewNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WLSelectorViewNode.m; sourceTree = "<group>"; };
 		0604B5371881375200B434AE /* nav_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nav_bg.png; sourceTree = "<group>"; };
 		0604B5391881383100B434AE /* WLScrollViewNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLScrollViewNode.h; sourceTree = "<group>"; };
 		0604B53A1881383100B434AE /* WLScrollViewNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WLScrollViewNode.m; sourceTree = "<group>"; };
+		0604B53C18813E8000B434AE /* WLSpriteNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLSpriteNode.h; sourceTree = "<group>"; };
+		0604B53D18813E8000B434AE /* WLSpriteNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WLSpriteNode.m; sourceTree = "<group>"; };
+		0604B53F1881436800B434AE /* WLStoreViewNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLStoreViewNode.h; sourceTree = "<group>"; };
+		0604B5401881436800B434AE /* WLStoreViewNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WLStoreViewNode.m; sourceTree = "<group>"; };
+		0604B54218816EFE00B434AE /* test_ground.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = test_ground.tmx; sourceTree = "<group>"; };
 		060E4B99187D8ED40011FC22 /* test_menpai_base.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test_menpai_base.png; sourceTree = "<group>"; };
 		060E4B9C187D906B0011FC22 /* WLGrapicsUtilitites.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLGrapicsUtilitites.h; sourceTree = "<group>"; };
 		060E4B9D187D906B0011FC22 /* WLGrapicsUtilitites.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WLGrapicsUtilitites.m; sourceTree = "<group>"; };
@@ -102,7 +109,6 @@
 		0619133B187F03AF0015A5EC /* LFCGzipUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFCGzipUtility.h; sourceTree = "<group>"; };
 		0619133C187F03AF0015A5EC /* LFCGzipUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFCGzipUtility.m; sourceTree = "<group>"; };
 		0619133F187F03F20015A5EC /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
-		06191343187F0A700015A5EC /* test_ground.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = test_ground.tmx; sourceTree = "<group>"; };
 		06191345187F0D090015A5EC /* isometric_grass_and_water.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = isometric_grass_and_water.tmx; sourceTree = "<group>"; };
 		841C5E3F187D6EC700FE3ABD /* WLMenPai.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLMenPai.h; sourceTree = "<group>"; };
 		841C5E40187D6EC700FE3ABD /* WLMenPai.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WLMenPai.m; sourceTree = "<group>"; };
@@ -229,8 +235,8 @@
 				0604B52F1880E29900B434AE /* nav_back@2x.png */,
 				06113026188059C900C98051 /* nav_close@2x.png */,
 				06191334187F02F00015A5EC /* isometric_grass_and_water.png */,
+				0604B54218816EFE00B434AE /* test_ground.tmx */,
 				06191345187F0D090015A5EC /* isometric_grass_and_water.tmx */,
-				06191343187F0A700015A5EC /* test_ground.tmx */,
 				060E4B99187D8ED40011FC22 /* test_menpai_base.png */,
 				841C5E42187D74FB00FE3ABD /* test_bg.png */,
 				841C5E43187D74FB00FE3ABD /* test_grid.png */,
@@ -357,6 +363,8 @@
 		8483256A187D560200365C6F /* Sprites */ = {
 			isa = PBXGroup;
 			children = (
+				0604B53C18813E8000B434AE /* WLSpriteNode.h */,
+				0604B53D18813E8000B434AE /* WLSpriteNode.m */,
 				8483256B187D569100365C6F /* WLLayerdNode.h */,
 				8483256C187D569100365C6F /* WLLayerdNode.m */,
 				84832574187D59AF00365C6F /* WLGridNode.h */,
@@ -369,10 +377,12 @@
 				8483256F187D589E00365C6F /* WLButtonNode.m */,
 				0604B5261880D7F200B434AE /* WLNavigationNode.h */,
 				0604B5271880D7F200B434AE /* WLNavigationNode.m */,
-				0604B5311880EDAD00B434AE /* WLNavigationViewNode.h */,
-				0604B5321880EDAD00B434AE /* WLNavigationViewNode.m */,
+				0604B5311880EDAD00B434AE /* WLSpriteViewNode.h */,
+				0604B5321880EDAD00B434AE /* WLSpriteViewNode.m */,
 				0604B5341880F16C00B434AE /* WLSelectorViewNode.h */,
 				0604B5351880F16C00B434AE /* WLSelectorViewNode.m */,
+				0604B53F1881436800B434AE /* WLStoreViewNode.h */,
+				0604B5401881436800B434AE /* WLStoreViewNode.m */,
 				0604B5391881383100B434AE /* WLScrollViewNode.h */,
 				0604B53A1881383100B434AE /* WLScrollViewNode.m */,
 				0604B52C1880DA2600B434AE /* WLNavigationBarNode.h */,
@@ -461,6 +471,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				84832534187D52BB00365C6F /* InfoPlist.strings in Resources */,
+				0604B54318816EFE00B434AE /* test_ground.tmx in Resources */,
 				060E4B9A187D8ED40011FC22 /* test_menpai_base.png in Resources */,
 				06191346187F0D090015A5EC /* isometric_grass_and_water.tmx in Resources */,
 				84832547187D52BB00365C6F /* Images.xcassets in Resources */,
@@ -468,7 +479,6 @@
 				841C5E46187D74FB00FE3ABD /* test_bg.png in Resources */,
 				0604B5301880E29900B434AE /* nav_back@2x.png in Resources */,
 				841C5E49187D74FB00FE3ABD /* test_selected.png in Resources */,
-				06191344187F0A700015A5EC /* test_ground.tmx in Resources */,
 				84832545187D52BB00365C6F /* Spaceship.png in Resources */,
 				0604B5381881375200B434AE /* nav_bg.png in Resources */,
 				06113027188059C900C98051 /* nav_close@2x.png in Resources */,
@@ -497,12 +507,14 @@
 				0604B52B1880D9BF00B434AE /* WLBarButtonItemNode.m in Sources */,
 				0619132F187EEF590015A5EC /* WLTileset.m in Sources */,
 				84832576187D59AF00365C6F /* WLGridNode.m in Sources */,
+				0604B53E18813E8000B434AE /* WLSpriteNode.m in Sources */,
 				841C5E41187D6EC700FE3ABD /* WLMenPai.m in Sources */,
 				84832568187D55C500365C6F /* WLLayeredScene.m in Sources */,
 				84832573187D590900365C6F /* WLBuildingNode.m in Sources */,
 				0604B5361880F16C00B434AE /* WLSelectorViewNode.m in Sources */,
+				0604B5411881436800B434AE /* WLStoreViewNode.m in Sources */,
 				0604B53B1881383100B434AE /* WLScrollViewNode.m in Sources */,
-				0604B5331880EDAD00B434AE /* WLNavigationViewNode.m in Sources */,
+				0604B5331880EDAD00B434AE /* WLSpriteViewNode.m in Sources */,
 				0619133A187F03A10015A5EC /* JSTileMap.m in Sources */,
 				84832543187D52BB00365C6F /* WLMyScene.m in Sources */,
 				06191333187EFBBF0015A5EC /* WLTileMapBuilder.m in Sources */,

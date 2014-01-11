@@ -6,8 +6,8 @@
 //  Copyright (c) 2014年 huangluyang. All rights reserved.
 //
 
-#import "WLNavigationViewNode.h"
+#import "WLSpriteViewNode.h"
 
-@interface WLSelectorViewNode : WLNavigationViewNode
+@interface WLSelectorViewNode : WLSpriteViewNode
 
 @end

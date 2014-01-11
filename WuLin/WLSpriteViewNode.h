@@ -9,9 +9,16 @@
 #import <SpriteKit/SpriteKit.h>
 #import "WLNavigationNode.h"
 
-@interface WLNavigationViewNode : SKSpriteNode
+extern const NSString *kWLNodeDidAddToParentNotification;
+
+@interface WLSpriteViewNode : SKSpriteNode
 
 @property (nonatomic, weak) WLNavigationNode *navigationNode;
 @property (nonatomic) WLBarButtonItemNode *rightBarButtonItem;
+
+/**
+ @brief 添加到父 node 回调，抽象方法，需重写
+ */
+- (void)didReceiveAddToParentNotification:(NSNotification *)notification;
 
 @end

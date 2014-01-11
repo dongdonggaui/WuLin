@@ -13,7 +13,7 @@
 #import "WLGridUtility.h"
 #import "JSTileMap.h"
 #import "WLNavigationNode.h"
-#import "WLSelectorViewNode.h"
+#import "WLStoreViewNode.h"
 
 @interface WLMyScene ()
 
@@ -55,6 +55,7 @@
     
     WLButtonNode *button1 = [WLButtonNode spriteNodeWithColor:[SKColor greenColor] size:CGSizeMake(100, 40)];
     button1.name = @"button1";
+    button1.title = @"建造设施";
     button1.userInteractionEnabled = YES;
     button1.position = CGPointMake(10 + button1.size.width / 2, self.size.height - 30 - button1.size.height / 2 - button.size.height - 10);
     [self addNode:button1 atSceneLayer:WLSceneLayerTop];
@@ -81,12 +82,11 @@
         [building moveToPointInMathCoord:CGPointMake(1, 1)];
         NSLog(@"(x, y) = %@", NSStringFromCGPoint(building.position));
     } else if ([button.name isEqualToString:@"button1"]) {
-        WLSelectorViewNode *node = [WLSelectorViewNode spriteNodeWithColor:[SKColor blueColor] size:self.size];
+        WLStoreViewNode *node = [WLStoreViewNode spriteNodeWithColor:[SKColor clearColor] size:self.size];
         WLNavigationNode *nav = [[WLNavigationNode alloc] initWithRootNode:node size:self.size];
-        nav.alpha = 0;
-        SKAction *action = [SKAction fadeInWithDuration:0.25];
+        nav.navigationBar.title = @"商店";
         [self addNode:nav atSceneLayer:WLSceneLayerHUD];
-        [nav runAction:action];
+        [nav show];
         
         
     } else if ([button.name isEqualToString:@"button2"]) {

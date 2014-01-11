@@ -10,4 +10,8 @@
 
 @interface WLNavigationBarNode : SKSpriteNode
 
+@property (nonatomic) NSString * title;
+
+- (instancetype)initWithTitle:(NSString *)title backgroundImageName:(NSString *)imageName;
+
 @end

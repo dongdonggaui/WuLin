@@ -6,7 +6,7 @@
 //  Copyright (c) 2014年 huangluyang. All rights reserved.
 //
 
-#import <SpriteKit/SpriteKit.h>
+#import "WLSpriteNode.h"
 #import "WLGrapicsUtilitites.h"
 
 typedef enum : uint8_t {
@@ -21,7 +21,7 @@ typedef enum : uint8_t {
 	kWLWorldLayerCount
 } WLWorldLayer;
 
-@interface WLLayerdNode : SKSpriteNode
+@interface WLLayerdNode : WLSpriteNode
 
 @property (nonatomic, readonly) SKNode *world;                  // root node to which all game renderables are attached
 @property (nonatomic, readonly) NSMutableArray *layers;           // different layer nodes within the world

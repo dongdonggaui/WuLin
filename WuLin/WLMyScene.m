@@ -7,7 +7,6 @@
 //
 
 #import "WLMyScene.h"
-#import "WLMenPai.h"
 #import "WLButtonNode.h"
 #import "WLBuildingNode.h"
 #import "WLGridUtility.h"
@@ -50,14 +49,14 @@
     WLButtonNode *button = [WLButtonNode spriteNodeWithColor:[SKColor yellowColor] size:CGSizeMake(100, 40)];
     button.name = @"button";
     button.userInteractionEnabled = YES;
-    button.position = CGPointMake(10 + button.size.width / 2, self.size.height - 30 - button.size.height / 2);
+    button.position = CGPointMake(10, self.size.height - 20 - button.size.height);
     [self addNode:button atSceneLayer:WLSceneLayerTop];
     
     WLButtonNode *button1 = [WLButtonNode spriteNodeWithColor:[SKColor greenColor] size:CGSizeMake(100, 40)];
     button1.name = @"button1";
     button1.title = @"建造设施";
     button1.userInteractionEnabled = YES;
-    button1.position = CGPointMake(10 + button1.size.width / 2, self.size.height - 30 - button1.size.height / 2 - button.size.height - 10);
+    button1.position = CGPointMake(10, self.size.height - 20 - button1.size.height - button.size.height - 10);
     [self addNode:button1 atSceneLayer:WLSceneLayerTop];
     
     WLButtonNode *button2 = [WLButtonNode spriteNodeWithColor:[SKColor blueColor] size:CGSizeMake(100, 40)];
@@ -65,7 +64,7 @@
     button2.title = @"显示网格";
     button2.selectedTitle = @"隐藏网格";
     button2.userInteractionEnabled = YES;
-    button2.position = CGPointMake(10 + button2.size.width / 2, self.size.height - 30 - button2.size.height / 2 - button.size.height - 10 - button1.size.height - 10);
+    button2.position = CGPointMake(10, self.size.height - 20 - button2.size.height - button.size.height - 10 - button1.size.height - 10);
     [self addNode:button2 atSceneLayer:WLSceneLayerTop];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didReceiveButtonNotification:) name:(NSString *)WLButtonNodeDidTappedNotification object:nil];

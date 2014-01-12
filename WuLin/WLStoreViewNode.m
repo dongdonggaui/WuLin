@@ -8,6 +8,7 @@
 
 #import "WLStoreViewNode.h"
 #import "WLButtonNode.h"
+#import "WLStoreDetailViewNode.h"
 
 @interface WLStoreViewNode () <WLButtonNodeDelegate>
 
@@ -39,7 +40,7 @@
 - (void)didReceiveAddToParentNotification:(NSNotification *)notification
 {
     if (notification.object == self) {
-        self.navigationNode.navigationBar.title = @"商店";
+        self.navigationNode.navigationBar.title = self.title;
     }
 }
 
@@ -47,6 +48,7 @@
 - (void)generalInit
 {
     self.anchorPoint = CGPointZero;
+    self.title = @"商店";
     for (int i = 0; i < 2; i++) {
         for (int j = 0; j < 3; j++) {
             CGFloat width = (self.size.width - 120) / 3;
@@ -54,8 +56,7 @@
             WLButtonNode *button = [WLButtonNode buttonWithColor:[SKColor purpleColor] size:CGSizeMake(width, height) delegate:self];
             int index = i * 3 + j + 1;
             button.name = [NSString stringWithFormat:@"storeItem%d", index];
-//            button.anchorPoint = CGPointZero;
-            button.position = CGPointMake(30 + j * (20 + width) + button.size.width / 2, 30 + i * (20 + height) + button.size.height / 2);
+            button.position = CGPointMake(30 + j * (20 + width), 30 + i * (20 + height));
             [self addChild:button];
             
             switch (index) {
@@ -94,7 +95,8 @@
 {
     DLog(@"222");
     if ([buttonNode.name isEqualToString:@"storeItem1"]) {
-        WLSpriteViewNode *node = [WLSpriteViewNode spriteNodeWithColor:[SKColor grayColor] size:self.size];
+        WLStoreDetailViewNode *node = [[WLStoreDetailViewNode alloc] initWithItems:@[@"金币100", @"金币100", @"金币100", @"金币100",@"金币100", @"金币100"] size:self.size];
+        node.title = buttonNode.title;
         [self.navigationNode pushNode:node];
     }
 }

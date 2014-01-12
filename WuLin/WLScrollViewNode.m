@@ -10,6 +10,22 @@
 
 @implementation WLScrollViewNode
 
+#pragma mark - Designate inits
++ (instancetype)spriteNodeWithColor:(UIColor *)color size:(CGSize)size
+{
+    WLScrollViewNode *node = [super spriteNodeWithColor:color size:size];
+    if (node) {
+        [node scrollGeneralInit];
+    }
+    
+    return node;
+}
+
+#pragma mark - Private methods
+- (void)scrollGeneralInit
+{
+    self.anchorPoint = CGPointZero;
+}
 
 #pragma mark - Touches
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
@@ -25,8 +41,8 @@
         UITouch *touch = [touches anyObject];
         CGPoint currentPoint = [touch locationInNode:self.parent];
         CGPoint previousPoint = [touch previousLocationInNode:self.parent];
-        CGPoint translation = CGPointMake(currentPoint.x - previousPoint.x, currentPoint.y - previousPoint.y);
-        [self handlePanTranslation:translation];
+        CGPoint translation = CGPointMake(currentPoint.x - previousPoint.x, 0);
+        [self handlePanTranslation:translation limitX:YES limitY:NO];
     }
 }
 

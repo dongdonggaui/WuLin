@@ -10,6 +10,6 @@
 
 @interface WLSpriteNode : SKSpriteNode
 
-- (void)handlePanTranslation:(CGPoint)translation;
+- (void)handlePanTranslation:(CGPoint)translation limitX:(BOOL)limitX limitY:(BOOL)limitY;
 
 @end

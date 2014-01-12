@@ -23,6 +23,7 @@
 		06113025188057DB00C98051 /* WLSelectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06113024188057DB00C98051 /* WLSelectorViewController.m */; };
 		06113027188059C900C98051 /* nav_close@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 06113026188059C900C98051 /* nav_close@2x.png */; };
 		0611302E1880647D00C98051 /* UINavigationBar+WuLin.m in Sources */ = {isa = PBXBuildFile; fileRef = 0611302D1880647D00C98051 /* UINavigationBar+WuLin.m */; };
+		061770B9188223A700C4AAD4 /* WLStoreDetailViewNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 061770B8188223A700C4AAD4 /* WLStoreDetailViewNode.m */; };
 		0619132F187EEF590015A5EC /* WLTileset.m in Sources */ = {isa = PBXBuildFile; fileRef = 0619132E187EEF590015A5EC /* WLTileset.m */; };
 		06191333187EFBBF0015A5EC /* WLTileMapBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 06191332187EFBBF0015A5EC /* WLTileMapBuilder.m */; };
 		06191336187F02F00015A5EC /* isometric_grass_and_water.png in Resources */ = {isa = PBXBuildFile; fileRef = 06191334187F02F00015A5EC /* isometric_grass_and_water.png */; };
@@ -99,6 +100,8 @@
 		06113026188059C900C98051 /* nav_close@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav_close@2x.png"; sourceTree = "<group>"; };
 		0611302C1880647D00C98051 /* UINavigationBar+WuLin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationBar+WuLin.h"; sourceTree = "<group>"; };
 		0611302D1880647D00C98051 /* UINavigationBar+WuLin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationBar+WuLin.m"; sourceTree = "<group>"; };
+		061770B7188223A700C4AAD4 /* WLStoreDetailViewNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLStoreDetailViewNode.h; sourceTree = "<group>"; };
+		061770B8188223A700C4AAD4 /* WLStoreDetailViewNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WLStoreDetailViewNode.m; sourceTree = "<group>"; };
 		0619132D187EEF590015A5EC /* WLTileset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLTileset.h; sourceTree = "<group>"; };
 		0619132E187EEF590015A5EC /* WLTileset.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WLTileset.m; sourceTree = "<group>"; };
 		06191331187EFBBF0015A5EC /* WLTileMapBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLTileMapBuilder.h; sourceTree = "<group>"; };
@@ -383,6 +386,8 @@
 				0604B5351880F16C00B434AE /* WLSelectorViewNode.m */,
 				0604B53F1881436800B434AE /* WLStoreViewNode.h */,
 				0604B5401881436800B434AE /* WLStoreViewNode.m */,
+				061770B7188223A700C4AAD4 /* WLStoreDetailViewNode.h */,
+				061770B8188223A700C4AAD4 /* WLStoreDetailViewNode.m */,
 				0604B5391881383100B434AE /* WLScrollViewNode.h */,
 				0604B53A1881383100B434AE /* WLScrollViewNode.m */,
 				0604B52C1880DA2600B434AE /* WLNavigationBarNode.h */,
@@ -510,6 +515,7 @@
 				0604B53E18813E8000B434AE /* WLSpriteNode.m in Sources */,
 				841C5E41187D6EC700FE3ABD /* WLMenPai.m in Sources */,
 				84832568187D55C500365C6F /* WLLayeredScene.m in Sources */,
+				061770B9188223A700C4AAD4 /* WLStoreDetailViewNode.m in Sources */,
 				84832573187D590900365C6F /* WLBuildingNode.m in Sources */,
 				0604B5361880F16C00B434AE /* WLSelectorViewNode.m in Sources */,
 				0604B5411881436800B434AE /* WLStoreViewNode.m in Sources */,

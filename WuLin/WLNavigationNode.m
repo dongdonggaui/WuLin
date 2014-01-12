@@ -66,8 +66,10 @@
     self.backItem.alpha = 1;
     
     [self.childNodeStack addObject:node];
-    node.position = CGPointMake(self.size.width + node.size.width / 2, node.size.height / 2);
+    node.position = CGPointMake(self.size.width, 0);
+    node.navigationNode = self;
     [self addChild:node];
+    [[NSNotificationCenter defaultCenter] postNotificationName:(NSString *)kWLNodeDidAddToParentNotification object:node];
     SKAction *move = [SKAction moveByX:-self.size.width y:0 duration:0.18];
     SKAction *complete = [SKAction runBlock:^{
         self.topNode = node;
@@ -76,7 +78,7 @@
 //    [self.topNode runAction:fade];
     [node runAction:[SKAction sequence:@[move, complete]]];
     
-    SKAction *back = [SKAction moveByX:-self.size.width / 2 y:0 duration:0.18];
+    SKAction *back = [SKAction moveByX:-self.size.width y:0 duration:0.18];
     [self.topNode runAction:back];
 }
 
@@ -88,16 +90,15 @@
     }
     WLSpriteViewNode *node = [self.childNodeStack lastObject];
     SKAction *move = [SKAction moveByX:self.size.width y:0 duration:0.18];
-//    SKAction *fade = [SKAction fadeInWithDuration:0.18];
     SKAction *complete = [SKAction runBlock:^{
         [self.topNode removeFromParent];
         self.topNode = nil;
         self.topNode = node;
+        self.topNode.navigationNode.navigationBar.title = self.topNode.title;
     }];
-    SKAction *back = [SKAction moveByX:self.size.width / 2 y:0 duration:0.18];
+    SKAction *back = [SKAction moveByX:self.size.width y:0 duration:0.18];
     [node runAction:back];
     [self.topNode runAction:[SKAction sequence:@[move, complete]]];
-//    [node runAction:[SKAction sequence:@[fade, complete]]];
 }
 
 - (void)show

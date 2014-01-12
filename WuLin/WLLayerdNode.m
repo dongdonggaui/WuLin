@@ -82,7 +82,7 @@
         CGPoint currentPoint = [touch locationInNode:self.parent];
         CGPoint previousPoint = [touch previousLocationInNode:self.parent];
         CGPoint translation = CGPointMake(currentPoint.x - previousPoint.x, currentPoint.y - previousPoint.y);
-        [self handlePanTranslation:translation];
+        [self handlePanTranslation:translation limitX:YES limitY:YES];
     } else if (2 == touches.count) {
         NSArray *arr = [touches allObjects];
         UITouch *touch1 = [arr objectAtIndex:0];

@@ -12,13 +12,18 @@
 
 
 #pragma mark - Public Methods
-- (void)handlePanTranslation:(CGPoint)translation
+- (void)handlePanTranslation:(CGPoint)translation limitX:(BOOL)limitX limitY:(BOOL)limitY
 {
     CGPoint position = CGPointMake(self.position.x + translation.x, self.position.y + translation.y);
-    position.x = MIN(position.x , 0);
-    position.x = MAX(self.scene.size.width - self.size.width, position.x);
-    position.y = MIN(position.y , 0);
-    position.y = MAX(position.y, self.scene.size.height - self.size.height);
+    if (limitX) {
+        position.x = MIN(position.x , 0);
+        position.x = MAX(self.scene.size.width - self.size.width, position.x);
+    }
+    if (limitY) {
+        position.y = MIN(position.y , 0);
+        position.y = MAX(position.y, self.scene.size.height - self.size.height);
+    }
+    
     self.position = position;
 }
 

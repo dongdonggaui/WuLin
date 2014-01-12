@@ -19,17 +19,26 @@ const NSString *kWLNodeDidAddToParentNotification = @"kWLNodeDidAddToParentNotif
 
 + (instancetype)spriteNodeWithColor:(UIColor *)color size:(CGSize)size
 {
-    WLSpriteViewNode *node = [super spriteNodeWithColor:color size:size];
+    WLSpriteViewNode *node = [[self alloc] initWithColor:color size:size];
     if (node) {
-        [node generallyInit];
+        
     }
     
     return node;
 }
 
+- (instancetype)initWithColor:(UIColor *)color size:(CGSize)size
+{
+    self = [super initWithColor:color size:size];
+    if (self) {
+        [self spriteViewGenerallyInit];
+    }
+    
+    return self;
+}
 
 #pragma mark - Private methods
-- (void)generallyInit
+- (void)spriteViewGenerallyInit
 {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didReceiveAddToParentNotification:) name:(NSString *)kWLNodeDidAddToParentNotification object:nil];
 }

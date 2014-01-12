@@ -7,7 +7,10 @@
 //
 
 #import "WLLayeredScene.h"
+#import "WLMenPai.h"
 
 @interface WLMyScene : WLLayeredScene
+
+@property (nonatomic, readonly) WLMenPai *menpai;
 
 @end

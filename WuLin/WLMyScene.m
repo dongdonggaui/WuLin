@@ -13,6 +13,7 @@
 #import "JSTileMap.h"
 #import "WLNavigationNode.h"
 #import "WLStoreViewNode.h"
+#import "WLStoreDetailViewNode.h"
 
 @interface WLMyScene ()
 
@@ -68,6 +69,21 @@
     [self addNode:button2 atSceneLayer:WLSceneLayerTop];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didReceiveButtonNotification:) name:(NSString *)WLButtonNodeDidTappedNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didReceiveSelectedTobeBuildNotification:) name:(NSString *)kWLDidSelectedTobeBuildNotification object:nil];
+}
+
+- (void)didReceiveSelectedTobeBuildNotification:(NSNotification *)notification
+{
+    WLButtonNode *button = (WLButtonNode *)notification.object;
+    if ([button.name isEqualToString:@"temple"]) {
+        WLBuildingNode *temple = [[WLBuildingNode alloc] initWithName:@"temple"];
+        if (temple) {
+//            temple.position = CGPointMake((self.menpai.size.width - temple.frame.size.width) / 2, (self.menpai.size.height - temple.frame.size.height) / 2);
+            [temple moveToPointInMathCoord:CGPointMake(6, -15)];
+            [self.menpai addNode:temple atWorldLayer:WLWorldLayerAboveGrid];
+            DLog(@"temple frame = %@", NSStringFromCGRect(temple.frame));
+        }
+    }
 }
 
 - (void)didReceiveButtonNotification:(NSNotification *)notification

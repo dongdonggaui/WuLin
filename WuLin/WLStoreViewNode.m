@@ -95,7 +95,9 @@
 {
     DLog(@"222");
     if ([buttonNode.name isEqualToString:@"storeItem1"]) {
-        WLStoreDetailViewNode *node = [[WLStoreDetailViewNode alloc] initWithItems:@[@"金币100", @"金币100", @"金币100", @"金币100",@"金币100", @"金币100"] size:self.size];
+        NSURL *url = [[NSBundle mainBundle] URLForResource:@"test_store_detail_items" withExtension:@"plist"];
+        NSArray *arr = [NSArray arrayWithContentsOfURL:url];
+        WLStoreDetailViewNode *node = [[WLStoreDetailViewNode alloc] initWithItems:arr size:self.size];
         node.title = buttonNode.title;
         [self.navigationNode pushNode:node];
     }

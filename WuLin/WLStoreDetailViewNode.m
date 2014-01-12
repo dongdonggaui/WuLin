@@ -10,6 +10,8 @@
 #import "WLScrollViewNode.h"
 #import "WLButtonNode.h"
 
+const NSString *kWLDidSelectedTobeBuildNotification = @"kWLDidSelectedTobeBuildNotification";
+
 @interface WLStoreDetailViewNode () <WLButtonNodeDelegate>
 
 @property (nonatomic) WLScrollViewNode *scrollNode;
@@ -78,12 +80,30 @@
 {
     if (self.items) {
         for (int i = 0; i < self.items.count; i++) {
-            WLButtonNode *button = [WLButtonNode buttonWithColor:[SKColor brownColor] size:CGSizeMake(150, self.scrollNode.size.height - 40) delegate:self];
+            NSDictionary *item = [self.items objectAtIndex:i];
+            WLButtonNode *button;
+            if (0 == i) {
+                button = [WLButtonNode buttonWithImageName:[item objectForKey:@"image"] delegate:self];
+                button.name = @"temple";
+            } else {
+                button= [WLButtonNode buttonWithColor:[SKColor brownColor] size:CGSizeMake(150, self.scrollNode.size.height - 40) delegate:self];
+                button.title = [item objectForKey:@"title"];
+            }
+            [button.userData removeAllObjects];
+            [button.userData addEntriesFromDictionary:item];
             button.position = CGPointMake(20 + i * (button.size.width + 20), 20);
-            button.title = [self.items objectAtIndex:i];
             [self.scrollNode addChild:button];
         }
         self.scrollNode.size = CGSizeMake(self.scrollNode.calculateAccumulatedFrame.size.width + 20, self.scrollNode.calculateAccumulatedFrame.size.height);
+    }
+}
+
+#pragma mark - button delegate
+- (void)buttonNodeDidTapped:(WLButtonNode *)buttonNode
+{
+    if ([buttonNode.name isEqualToString:@"temple"]) {
+        [self.navigationNode dismiss];
+        [[NSNotificationCenter defaultCenter] postNotificationName:(NSString *)kWLDidSelectedTobeBuildNotification object:buttonNode];
     }
 }
 

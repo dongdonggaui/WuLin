@@ -8,6 +8,8 @@
 
 #import "WLSpriteViewNode.h"
 
+extern const NSString *kWLDidSelectedTobeBuildNotification;
+
 @interface WLStoreDetailViewNode : WLSpriteViewNode
 
 @property (nonatomic) NSArray *items;

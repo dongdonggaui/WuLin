@@ -37,6 +37,7 @@
         tileMap.yScale = 0.5;
         [self addNode:tileMap atWorldLayer:WLWorldLayerBelowGrid];
         self.size = tileMap.calculateAccumulatedFrame.size;
+        self.position = CGPointMake((self.scene.size.width - self.size.width) / 4, (self.scene.size.height - self.size.height) / 4);
     }
     DLog(@"menpai.size = %@", NSStringFromCGSize(self.size));
 }

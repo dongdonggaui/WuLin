@@ -8,6 +8,7 @@
 
 #import "WLGridNode.h"
 
+@class JSTileMap;
 @interface WLBuildingNode : WLGridNode
 
 @property (nonatomic, readonly) CGPoint physicalCoord;
@@ -15,6 +16,7 @@
 
 
 + (instancetype)buildingWithShadowImageName:(NSString *)imageName xTileCount:(int)xTileCount yTileCount:(int)yTileCount;
+- (instancetype)initWithName:(NSString *)name;
 
 - (void)cancelBuild;
 - (void)cofrimBuild;

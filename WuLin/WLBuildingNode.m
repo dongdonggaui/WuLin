@@ -8,6 +8,7 @@
 
 #import "WLBuildingNode.h"
 #import "WLGridUtility.h"
+#import "JSTileMap.h"
 
 extern const float kGridWidth;
 extern const float kGridHeight;
@@ -41,6 +42,23 @@ extern const float kGridHeight;
     building.isBuilding = YES;
     
     return building;
+}
+
+- (instancetype)initWithName:(NSString *)name
+{
+    self = [super initWithColor:[SKColor clearColor] size:CGSizeZero];
+    if (self) {
+        self.name = name;
+        self.userInteractionEnabled = YES;
+        JSTileMap *tile = [JSTileMap mapNamed:[NSString stringWithFormat:@"%@.tmx", name] withBaseZPosition:1 andZOrderModifier:0];
+        if (tile) {
+            [self addChild:tile];
+            tile.userInteractionEnabled = NO;
+            self.size = self.calculateAccumulatedFrame.size;
+        }
+    }
+    
+    return self;
 }
 
 #pragma mark - Setters & Getters

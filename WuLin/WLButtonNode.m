@@ -17,17 +17,31 @@ const NSString *WLButtonNodeDidTappedNotification = @"WLButtonNodeDidTappedNotif
 @property (nonatomic) SKLabelNode *titleLabel;
 @property (nonatomic) BOOL isSigleTap;
 @property (nonatomic) CGPoint beginTapPoint;
+@property (nonatomic) CGSize theInitSize;
+@property (nonatomic) BOOL beingZoomDown;
+@property (nonatomic) BOOL beingZoomUp;
 
 @end
 
 @implementation WLButtonNode
+
++ (instancetype)buttonWithImageName:(NSString *)name delegate:(id<WLButtonNodeDelegate>)delegate
+{
+    WLButtonNode *button = [self spriteNodeWithImageNamed:name];
+    if (button) {
+        button.delegate = delegate;
+        [button buttonGeneralInit];
+    }
+    
+    return button;
+}
 
 + (instancetype)buttonWithColor:(UIColor *)color size:(CGSize)size delegate:(id<WLButtonNodeDelegate>)delegate
 {
     WLButtonNode *button = [self spriteNodeWithColor:color size:size];
     if (button) {
         button.delegate = delegate;
-        [button generalInit];
+        [button buttonGeneralInit];
     }
     
     return button;
@@ -37,7 +51,7 @@ const NSString *WLButtonNodeDidTappedNotification = @"WLButtonNodeDidTappedNotif
 {
     WLButtonNode *button = [super spriteNodeWithColor:color size:size];
     if (button) {
-        [button generalInit];
+        [button buttonGeneralInit];
     }
     
     return button;
@@ -63,7 +77,7 @@ const NSString *WLButtonNodeDidTappedNotification = @"WLButtonNodeDidTappedNotif
 }
 
 #pragma mark - Private methods
-- (void)generalInit
+- (void)buttonGeneralInit
 {
     self.anchorPoint = CGPointZero;
     SKLabelNode *label = [SKLabelNode labelNodeWithFontNamed:@"Chalkduster"];
@@ -74,35 +88,44 @@ const NSString *WLButtonNodeDidTappedNotification = @"WLButtonNodeDidTappedNotif
     self.selected = NO;
     [self addChild:label];
     self.userInteractionEnabled = YES;
-}
-
-- (void)zoomUp
-{
-    if (![self actionForKey:@"zoomUp"]) {
-        SKAction *zoom = [SKAction scaleTo:1.1 duration:0.05];
-        CGFloat xDelta1 = 2. / 9 * self.size.width;
-        CGFloat yDelta1 = 2. / 9 * self.size.height;
-        SKAction *move1 = [SKAction moveByX:-xDelta1 / 2 y:-yDelta1 / 2 duration:0.05];
-        SKAction *zoom1 = [SKAction group:@[zoom, move1]];
-        SKAction *zoomBack = [SKAction scaleTo:1 duration:0.05];
-        CGFloat xDelta2 = 1. / 9 * self.size.width;
-        CGFloat yDelta2 = 1. / 9 * self.size.height;
-        SKAction *move2 = [SKAction moveByX:xDelta2 / 2 y:yDelta2 / 2 duration:0.05];
-        SKAction *zoom2 = [SKAction group:@[zoomBack, move2]];
-        [self runAction:[SKAction sequence:@[zoom1, zoom2]] withKey:@"zoomUp"];
-    }
+    self.theInitSize  = self.size;
+    self.beingZoomUp = NO;
+    self.beingZoomDown = NO;
 }
 
 - (void)zoomDown
 {
-    if ([self actionForKey:@"zoomDown"]) {
-        [self removeActionForKey:@"zoomDown"];
+    if (!self.beingZoomDown && !self.beingZoomUp && ![self actionForKey:@"zoomDown"]) {
+        self.beingZoomDown = YES;
+        DLog(@"555");
+        SKAction *zoom = [SKAction scaleTo:0.9 duration:0.1];
+        CGFloat xDelta = 0.1 * self.theInitSize.width;
+        CGFloat yDelta = 0.1 * self.theInitSize.height;
+        SKAction *move = [SKAction moveByX:xDelta / 2 y:yDelta / 2 duration:0.1];
+        [self runAction:[SKAction group:@[zoom, move]] withKey:@"zoomDown"];
     }
-    SKAction *zoom = [SKAction scaleTo:0.9 duration:0];
-    CGFloat xDelta = 0.1 * self.size.width;
-    CGFloat yDelta = 0.1 * self.size.height;
-    SKAction *move = [SKAction moveByX:xDelta / 2 y:yDelta / 2 duration:0];
-    [self runAction:[SKAction group:@[zoom, move]] withKey:@"zoomDown"];
+}
+
+- (void)zoomUp
+{
+    if (!self.beingZoomUp && self.beingZoomDown && ![self actionForKey:@"zoomUp"]) {
+        self.beingZoomUp = YES;
+        SKAction *zoom = [SKAction scaleTo:1.1 duration:0.05];
+        CGFloat xDelta1 = 0.2 * self.theInitSize.width;
+        CGFloat yDelta1 = 0.2 * self.theInitSize.height;
+        SKAction *move1 = [SKAction moveByX:-xDelta1 / 2 y:-yDelta1 / 2 duration:0.05];
+        SKAction *zoom1 = [SKAction group:@[zoom, move1]];
+        SKAction *zoomBack = [SKAction scaleTo:1 duration:0.05];
+        CGFloat xDelta2 = 0.1 * self.theInitSize.width;
+        CGFloat yDelta2 = 0.1 * self.theInitSize.height;
+        SKAction *move2 = [SKAction moveByX:xDelta2 / 2 y:yDelta2 / 2 duration:0.05];
+        SKAction *zoom2 = [SKAction group:@[zoomBack, move2]];
+        SKAction *complete = [SKAction runBlock:^{
+            self.beingZoomDown = NO;
+            self.beingZoomUp = NO;
+        }];
+        [self runAction:[SKAction sequence:@[zoom1, zoom2, complete]] withKey:@"zoomUp"];
+    }
 }
 
 #pragma mark - Touches

@@ -20,8 +20,9 @@
 
 + (instancetype)sharedInstance;
 
-+ (CGPoint)convertCoordinateToSceneWitGridX:(NSInteger)x
-                                      gridY:(NSInteger)y;
++ (CGPoint)screenPointAtGridX:(NSInteger)x
+                        gridY:(NSInteger)y;
++ (CGPoint)gridAtScreenPoint:(CGPoint)point;
 
 + (void)generateTilesInNode:(WLLayerdNode *)theNode
               withGridWidth:(NSInteger)gridWidth

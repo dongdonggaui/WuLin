@@ -49,6 +49,7 @@
     
     WLButtonNode *button = [WLButtonNode spriteNodeWithColor:[SKColor yellowColor] size:CGSizeMake(100, 40)];
     button.name = @"button";
+    button.title = @"恢复比例";
     button.userInteractionEnabled = YES;
     button.position = CGPointMake(10, self.size.height - 20 - button.size.height);
     [self addNode:button atSceneLayer:WLSceneLayerTop];
@@ -90,12 +91,16 @@
 {
     WLButtonNode *button = notification.object;
     if ([button.name isEqualToString:@"button"]) {
-        WLBuildingNode *building = [WLBuildingNode buildingWithShadowImageName:@"test_selected" xTileCount:2 yTileCount:2];
-        building.userInteractionEnabled = YES;
-        building.size = CGSizeMake(building.size.width, building.size.height);
-        [self.menpai addNode:building atWorldLayer:WLWorldLayerAboveGrid];
-        [building moveToPointInMathCoord:CGPointMake(1, 1)];
-        NSLog(@"(x, y) = %@", NSStringFromCGPoint(building.position));
+//        WLBuildingNode *building = [WLBuildingNode buildingWithShadowImageName:@"test_selected" xTileCount:2 yTileCount:2];
+//        building.userInteractionEnabled = YES;
+//        building.size = CGSizeMake(building.size.width, building.size.height);
+//        [self.menpai addNode:building atWorldLayer:WLWorldLayerAboveGrid];
+//        [building moveToPointInMathCoord:CGPointMake(1, 1)];
+//        NSLog(@"(x, y) = %@", NSStringFromCGPoint(building.position));
+        self.menpai.xScale = 1;
+        self.menpai.yScale = 1;
+        [WLGridManager sharedInstance].currentRate = 0.5;
+        
     } else if ([button.name isEqualToString:@"button1"]) {
         WLStoreViewNode *node = [WLStoreViewNode spriteNodeWithColor:[SKColor clearColor] size:self.size];
         WLNavigationNode *nav = [[WLNavigationNode alloc] initWithRootNode:node size:self.size];

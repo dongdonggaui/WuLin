@@ -51,6 +51,8 @@
         self.userInteractionEnabled = YES;
         JSTileMap *tile = [JSTileMap mapNamed:[NSString stringWithFormat:@"%@.tmx", name] withBaseZPosition:1 andZOrderModifier:0];
         if (tile) {
+            tile.xScale = 0.5;
+            tile.yScale = 0.5;
             tile.position = CGPointMake(0, -tile.calculateAccumulatedFrame.origin.y); /* 可理解为tile的anchor为(0,0) */
             [self addChild:tile];
             tile.userInteractionEnabled = NO;
@@ -67,8 +69,7 @@
 {
     _physicalCoord = physicalCoord;
 //    SKSpriteNode *parentNode = (SKSpriteNode *)self.parent.parent.parent;
-    CGPoint position = [WLGridManager convertCoordinateToSceneWitGridX:physicalCoord.x gridY:physicalCoord.y];
-    DLog(@"self.scale = %f", self.xScale);
+    CGPoint position = [WLGridManager screenPointAtGridX:physicalCoord.x gridY:physicalCoord.y];
     self.position = position;
 }
 
@@ -103,24 +104,8 @@
     if (1 == touches.count) {
         UITouch *touch = [touches anyObject];
         CGPoint currentPoint = [touch locationInNode:self.parent];
-        CGPoint unRateTranslation = CGPointMake(currentPoint.x - self.previousPoint.x, currentPoint.y - self.previousPoint.y);
-        CGPoint translation = CGPointMake((currentPoint.x - self.previousPoint.x) / [WLGridManager sharedInstance].currentRate, (currentPoint.y - self.previousPoint.y) / [WLGridManager sharedInstance].currentRate);
-//        DLog(@"unrate = %@, translation = %@, scale = %f", NSStringFromCGPoint(unRateTranslation), NSStringFromCGPoint(translation), [WLGridManager sharedInstance].currentRate);
-        CGPoint physicalCoord = self.physicalCoord;
-        if (translation.x > 32) {
-            physicalCoord.x++;
-        } else if (translation.x < -32) {
-            physicalCoord.x--;
-        }
-        if (translation.y > 16) {
-            physicalCoord.y--;
-        } else if (translation.y < -16) {
-            physicalCoord.y++;
-        }
-        if (self.physicalCoord.x != physicalCoord.x || self.physicalCoord.y != physicalCoord.y) {
-            [self moveToPointInMathCoord:physicalCoord];
-            self.previousPoint = currentPoint;
-        }
+        CGPoint grid = [WLGridManager gridAtScreenPoint:currentPoint];
+        [self moveToPointInMathCoord:grid];
     }
 }
 

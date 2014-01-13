@@ -40,6 +40,7 @@
 		841C5E47187D74FB00FE3ABD /* test_grid.png in Resources */ = {isa = PBXBuildFile; fileRef = 841C5E43187D74FB00FE3ABD /* test_grid.png */; };
 		841C5E48187D74FB00FE3ABD /* test_restroom.png in Resources */ = {isa = PBXBuildFile; fileRef = 841C5E44187D74FB00FE3ABD /* test_restroom.png */; };
 		841C5E49187D74FB00FE3ABD /* test_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 841C5E45187D74FB00FE3ABD /* test_selected.png */; };
+		84717D1C1883BBE3006740AA /* WLGridManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84717D1B1883BBE3006740AA /* WLGridManager.m */; };
 		84832528187D52BB00365C6F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84832527187D52BB00365C6F /* Foundation.framework */; };
 		8483252A187D52BB00365C6F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84832529187D52BB00365C6F /* CoreGraphics.framework */; };
 		8483252C187D52BB00365C6F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8483252B187D52BB00365C6F /* UIKit.framework */; };
@@ -62,7 +63,6 @@
 		84832570187D589E00365C6F /* WLButtonNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 8483256F187D589E00365C6F /* WLButtonNode.m */; };
 		84832573187D590900365C6F /* WLBuildingNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 84832572187D590900365C6F /* WLBuildingNode.m */; };
 		84832576187D59AF00365C6F /* WLGridNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 84832575187D59AF00365C6F /* WLGridNode.m */; };
-		84B55B4F187E526A006A5077 /* WLGridUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B55B4E187E526A006A5077 /* WLGridUtility.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -127,6 +127,8 @@
 		841C5E43187D74FB00FE3ABD /* test_grid.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test_grid.png; sourceTree = "<group>"; };
 		841C5E44187D74FB00FE3ABD /* test_restroom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test_restroom.png; sourceTree = "<group>"; };
 		841C5E45187D74FB00FE3ABD /* test_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test_selected.png; sourceTree = "<group>"; };
+		84717D1A1883BBE3006740AA /* WLGridManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLGridManager.h; sourceTree = "<group>"; };
+		84717D1B1883BBE3006740AA /* WLGridManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WLGridManager.m; sourceTree = "<group>"; };
 		84832524187D52BB00365C6F /* WuLin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WuLin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84832527187D52BB00365C6F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		84832529187D52BB00365C6F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -160,8 +162,6 @@
 		84832572187D590900365C6F /* WLBuildingNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WLBuildingNode.m; sourceTree = "<group>"; };
 		84832574187D59AF00365C6F /* WLGridNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLGridNode.h; sourceTree = "<group>"; };
 		84832575187D59AF00365C6F /* WLGridNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WLGridNode.m; sourceTree = "<group>"; };
-		84B55B4D187E526A006A5077 /* WLGridUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLGridUtility.h; sourceTree = "<group>"; };
-		84B55B4E187E526A006A5077 /* WLGridUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WLGridUtility.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -196,8 +196,8 @@
 				0619133E187F03BE0015A5EC /* TileMap */,
 				060E4B9C187D906B0011FC22 /* WLGrapicsUtilitites.h */,
 				060E4B9D187D906B0011FC22 /* WLGrapicsUtilitites.m */,
-				84B55B4D187E526A006A5077 /* WLGridUtility.h */,
-				84B55B4E187E526A006A5077 /* WLGridUtility.m */,
+				84717D1A1883BBE3006740AA /* WLGridManager.h */,
+				84717D1B1883BBE3006740AA /* WLGridManager.m */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -534,6 +534,7 @@
 				061770B9188223A700C4AAD4 /* WLStoreDetailViewNode.m in Sources */,
 				84832573187D590900365C6F /* WLBuildingNode.m in Sources */,
 				0604B5361880F16C00B434AE /* WLSelectorViewNode.m in Sources */,
+				84717D1C1883BBE3006740AA /* WLGridManager.m in Sources */,
 				0604B5411881436800B434AE /* WLStoreViewNode.m in Sources */,
 				0604B53B1881383100B434AE /* WLScrollViewNode.m in Sources */,
 				0604B5331880EDAD00B434AE /* WLSpriteViewNode.m in Sources */,
@@ -543,7 +544,6 @@
 				06113025188057DB00C98051 /* WLSelectorViewController.m in Sources */,
 				84832536187D52BB00365C6F /* main.m in Sources */,
 				0604B52E1880DA2600B434AE /* WLNavigationBarNode.m in Sources */,
-				84B55B4F187E526A006A5077 /* WLGridUtility.m in Sources */,
 				8483253A187D52BB00365C6F /* WLAppDelegate.m in Sources */,
 				8483256D187D569100365C6F /* WLLayerdNode.m in Sources */,
 				0604B5281880D7F200B434AE /* WLNavigationNode.m in Sources */,

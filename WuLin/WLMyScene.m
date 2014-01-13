@@ -9,7 +9,7 @@
 #import "WLMyScene.h"
 #import "WLButtonNode.h"
 #import "WLBuildingNode.h"
-#import "WLGridUtility.h"
+#import "WLGridManager.h"
 #import "JSTileMap.h"
 #import "WLNavigationNode.h"
 #import "WLStoreViewNode.h"
@@ -79,7 +79,7 @@
         WLBuildingNode *temple = [[WLBuildingNode alloc] initWithName:@"temple"];
         if (temple) {
 //            temple.position = CGPointMake((self.menpai.size.width - temple.frame.size.width) / 2, (self.menpai.size.height - temple.frame.size.height) / 2);
-            [temple moveToPointInMathCoord:CGPointMake(6, -15)];
+            [temple moveToPointInMathCoord:CGPointMake(0, 0)];
             [self.menpai addNode:temple atWorldLayer:WLWorldLayerAboveGrid];
             DLog(@"temple frame = %@", NSStringFromCGRect(temple.frame));
         }

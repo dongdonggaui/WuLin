@@ -7,8 +7,12 @@
 //
 
 #import "WLMenPai.h"
-#import "WLGridUtility.h"
+#import "WLGridManager.h"
 #import "JSTileMap.h"
+
+@interface WLMenPai ()
+
+@end
 
 @implementation WLMenPai
 
@@ -36,10 +40,22 @@
         tileMap.xScale = 0.5;
         tileMap.yScale = 0.5;
         [self addNode:tileMap atWorldLayer:WLWorldLayerBelowGrid];
-        self.size = tileMap.calculateAccumulatedFrame.size;
+        tileMap.position = CGPointMake(32, 16);
+        self.size = CGSizeMake(tileMap.calculateAccumulatedFrame.size.width + 32, tileMap.calculateAccumulatedFrame.size.height + 16);
         self.position = CGPointMake((self.scene.size.width - self.size.width) / 4, (self.scene.size.height - self.size.height) / 4);
+        
+        // initial global parameter{0, 8}, position = {368, 496}
+        [WLGridManager sharedInstance].currentRate = 0.5;
+        [WLGridManager sharedInstance].tileWidth   = tileMap.tileSize.width;
+        [WLGridManager sharedInstance].tileHeight  = tileMap.tileSize.height;
+        [WLGridManager sharedInstance].xGridCount  = tileMap.mapSize.width;
+        [WLGridManager sharedInstance].yGridCount  = tileMap.mapSize.height;
+        [WLGridManager sharedInstance].basePoint   = CGPointMake((self.size.width - tileMap.tileSize.width * 0.5) / 2, self.size.height - tileMap.tileSize.height * 0.5 - tileMap.position.y);
+        // generate grid
+        [WLGridManager generateTilesInNode:self
+                             withGridWidth:tileMap.mapSize.width
+                                gridHeight:tileMap.mapSize.height];
     }
-    DLog(@"menpai.size = %@", NSStringFromCGSize(self.size));
 }
 
 @end

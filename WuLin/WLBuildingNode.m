@@ -7,16 +7,14 @@
 //
 
 #import "WLBuildingNode.h"
-#import "WLGridUtility.h"
+#import "WLGridManager.h"
 #import "JSTileMap.h"
-
-extern const float kGridWidth;
-extern const float kGridHeight;
 
 @interface WLBuildingNode ()
 
 @property (nonatomic) CGPoint physicalCoord;
 @property (nonatomic) BOOL isBuilding;
+@property (nonatomic) CGPoint previousPoint;
 
 @end
 
@@ -35,7 +33,7 @@ extern const float kGridHeight;
     for (int i = xTileCount - 1; i >= 0; i--) {
         for (int j = 0; j < yTileCount; j++) {
             SKSpriteNode *node = [SKSpriteNode spriteNodeWithImageNamed:@"test_restroom"];
-            node.position = CGPointMake((i+j) * kGridWidth / 2, (i-j) * kGridHeight / 2);
+            node.position = CGPointMake((i+j) * 64.f / 2, (i-j) * 32.f / 2);
             [building addChild:node];
         }
     }
@@ -46,15 +44,18 @@ extern const float kGridHeight;
 
 - (instancetype)initWithName:(NSString *)name
 {
-    self = [super initWithColor:[SKColor clearColor] size:CGSizeZero];
+    self = [super initWithColor:[SKColor blueColor] size:CGSizeZero];
     if (self) {
+        self.anchorPoint = CGPointZero;
         self.name = name;
         self.userInteractionEnabled = YES;
         JSTileMap *tile = [JSTileMap mapNamed:[NSString stringWithFormat:@"%@.tmx", name] withBaseZPosition:1 andZOrderModifier:0];
         if (tile) {
+            tile.position = CGPointMake(0, -tile.calculateAccumulatedFrame.origin.y); /* 可理解为tile的anchor为(0,0) */
             [self addChild:tile];
             tile.userInteractionEnabled = NO;
             self.size = self.calculateAccumulatedFrame.size;
+            DLog(@"temple size = %@, tile size = %@", NSStringFromCGSize(self.size), NSStringFromCGRect(tile.calculateAccumulatedFrame));
         }
     }
     
@@ -65,15 +66,17 @@ extern const float kGridHeight;
 - (void)setPhysicalCoord:(CGPoint)physicalCoord
 {
     _physicalCoord = physicalCoord;
-    SKSpriteNode *parentNode = (SKSpriteNode *)self.parent.parent.parent;
-    CGPoint position = [WLGridUtility convertCoordinateToScene:physicalCoord withZoomRate:self.xScale offset:CGPointMake(0, 0)];
-    self.position = CGPointMake(position.x, parentNode.size.height - position.y);
+//    SKSpriteNode *parentNode = (SKSpriteNode *)self.parent.parent.parent;
+    CGPoint position = [WLGridManager convertCoordinateToSceneWitGridX:physicalCoord.x gridY:physicalCoord.y];
+    DLog(@"self.scale = %f", self.xScale);
+    self.position = position;
 }
 
 #pragma mark - Override
 - (void)moveToPointInMathCoord:(CGPoint)point
 {
     [self setPhysicalCoord:point];
+    DLog(@"self.physical = %@, position = %@", NSStringFromCGPoint(point), NSStringFromCGPoint(self.position));
 }
 
 #pragma mark - To be override
@@ -87,12 +90,22 @@ extern const float kGridHeight;
 }
 
 #pragma mark - Touches
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    if (1 == touches.count) {
+        UITouch *touch = [touches anyObject];
+        self.previousPoint = [touch locationInNode:self.parent];
+    }
+}
+
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
     if (1 == touches.count) {
         UITouch *touch = [touches anyObject];
         CGPoint currentPoint = [touch locationInNode:self.parent];
-        CGPoint translation = CGPointMake(currentPoint.x - self.position.x, currentPoint.y - self.position.y);
+        CGPoint unRateTranslation = CGPointMake(currentPoint.x - self.previousPoint.x, currentPoint.y - self.previousPoint.y);
+        CGPoint translation = CGPointMake((currentPoint.x - self.previousPoint.x) / [WLGridManager sharedInstance].currentRate, (currentPoint.y - self.previousPoint.y) / [WLGridManager sharedInstance].currentRate);
+//        DLog(@"unrate = %@, translation = %@, scale = %f", NSStringFromCGPoint(unRateTranslation), NSStringFromCGPoint(translation), [WLGridManager sharedInstance].currentRate);
         CGPoint physicalCoord = self.physicalCoord;
         if (translation.x > 32) {
             physicalCoord.x++;
@@ -106,6 +119,7 @@ extern const float kGridHeight;
         }
         if (self.physicalCoord.x != physicalCoord.x || self.physicalCoord.y != physicalCoord.y) {
             [self moveToPointInMathCoord:physicalCoord];
+            self.previousPoint = currentPoint;
         }
     }
 }

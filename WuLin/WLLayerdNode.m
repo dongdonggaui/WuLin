@@ -7,6 +7,7 @@
 //
 
 #import "WLLayerdNode.h"
+#import "WLGridManager.h"
 
 @interface WLLayerdNode ()
 
@@ -22,20 +23,9 @@
 + (instancetype)spriteNodeWithImageNamed:(NSString *)name
 {
     WLLayerdNode *game = [super spriteNodeWithImageNamed:name];
-    SKNode *world = [[SKNode alloc] init];
-    [world setName:@"world"];
-    game.world = world;
-    NSMutableArray *layers = [NSMutableArray arrayWithCapacity:kWLWorldLayerCount];
-    game.layers = layers;
-    for (int i = 0; i < kWLWorldLayerCount; i++) {
-        SKNode *layer = [[SKNode alloc] init];
-        layer.zPosition = i - kWLWorldLayerCount;
-        [world addChild:layer];
-        [(NSMutableArray *)layers addObject:layer];
+    if (game) {
+        [game layeredNodeGeneralInit];
     }
-    game.currentRate = 1;
-    
-    [game addChild:world];
     
     return game;
 }
@@ -43,11 +33,21 @@
 + (instancetype)spriteNodeWithColor:(UIColor *)color size:(CGSize)size
 {
     WLLayerdNode *game = [super spriteNodeWithColor:color size:size];
+    if (game) {
+        [game layeredNodeGeneralInit];
+    }
+    
+    return game;
+}
+
+#pragma mark - Private methods
+- (void)layeredNodeGeneralInit
+{
     SKNode *world = [[SKNode alloc] init];
-    [world setName:@"world"];
-    game.world = world;
+    world.name = @"world";
+    self.world = world;
     NSMutableArray *layers = [NSMutableArray arrayWithCapacity:kWLWorldLayerCount];
-    game.layers = layers;
+    self.layers = layers;
     for (int i = 0; i < kWLWorldLayerCount; i++) {
         SKNode *layer = [[SKNode alloc] init];
         layer.zPosition = i - kWLWorldLayerCount;
@@ -55,10 +55,8 @@
         [(NSMutableArray *)layers addObject:layer];
     }
     
-    [game addChild:world];
-    game.currentRate = 1;
-    
-    return game;
+    [self addChild:world];
+    self.currentRate = 1;
 }
 
 #pragma mark - Public Methods
@@ -111,6 +109,7 @@
         CGSize afterSize = self.size;
         
         self.currentRate = rate;
+        [WLGridManager sharedInstance].currentRate = rate;
         
         // garuntee edge from out of screen
         CGFloat xDelta = (afterSize.width - beforeSize.width) / 2;
@@ -123,6 +122,8 @@
         currentPosition.y = MIN(currentPosition.y, 0);
         currentPosition.y = MAX(currentPosition.y, self.scene.size.height - self.size.height);
         self.position = currentPosition;
+        
+        DLog(@"scale = %f, globelScale = %f", rate, [WLGridManager sharedInstance].currentRate);
     }
 }
 

@@ -23,8 +23,8 @@ typedef enum : uint8_t {
 
 @interface WLLayerdNode : WLSpriteNode
 
-@property (nonatomic, readonly) SKNode *world;                  // root node to which all game renderables are attached
-@property (nonatomic, readonly) NSMutableArray *layers;           // different layer nodes within the world
+@property (nonatomic, readonly) SKNode *world;                      // root node to which all game renderables are attached
+@property (nonatomic, readonly) NSMutableArray *layers;             // different layer nodes within the world
 
 /* All sprites in the scene should be added through this method to ensure they are placed in the correct world layer. */
 - (void)addNode:(SKNode *)node atWorldLayer:(WLWorldLayer)layer;

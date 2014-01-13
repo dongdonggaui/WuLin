@@ -571,6 +571,26 @@
   return self;
 }
 
+//- (NSString *)description
+//{
+//    NSMutableString *sb = [NSMutableString stringWithString:[super description]];
+//    [sb appendFormat:@"properties : { name : %@, firstGid]
+//     
+//     @property (readonly, nonatomic) NSString* name;
+//     @property (readonly, nonatomic) NSUInteger firstGid;
+//     @property (readonly, nonatomic) CGSize tileSize;
+//     @property (readonly, nonatomic) CGSize unitTileSize;
+//     @property (readonly, nonatomic) NSUInteger spacing;
+//     @property (readonly, nonatomic) NSUInteger margin;
+//     @property (readonly, nonatomic) NSString* sourceImage;
+//     @property (readonly, nonatomic) CGSize imageSize;
+//     @property (readonly, nonatomic) NSInteger atlasTilesPerRow;
+//     @property (readonly, nonatomic) NSInteger atlasTilesPerCol;
+//     @property (readonly, nonatomic) SKTexture* atlasTexture;
+//    
+//    return sb;
+//}
+
 @end
 
 

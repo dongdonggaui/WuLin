@@ -97,8 +97,8 @@
         CGFloat rate = self.currentRate + (distance - preDistance) / preDistance;
         CGFloat minWidth = self.scene.size.width;
         CGFloat minHeight = self.scene.size.height;
-        CGFloat minWidthRate = minWidth / 1312.f;
-        CGFloat minHeightRate = minHeight / 672.f;
+        CGFloat minWidthRate = minWidth / [WLGridManager sharedInstance].mapTotalWidth;
+        CGFloat minHeightRate = minHeight / [WLGridManager sharedInstance].mapTotalHeight;
         rate = MIN(rate, 1.5);
         rate = MAX(rate, minWidthRate);
         rate = MAX(rate, minHeightRate);

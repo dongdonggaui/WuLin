@@ -9,9 +9,12 @@
 #import <Foundation/Foundation.h>
 
 @class WLLayerdNode;
+
 @interface WLGridManager : NSObject
 
 @property (nonatomic) CGFloat   currentRate;
+@property (nonatomic) CGFloat   mapTotalWidth;
+@property (nonatomic) CGFloat   mapTotalHeight;
 @property (nonatomic) CGFloat   tileWidth;
 @property (nonatomic) CGFloat   tileHeight;
 @property (nonatomic) NSInteger xGridCount;

@@ -297,6 +297,7 @@
 		8483252F187D52BB00365C6F /* WuLin */ = {
 			isa = PBXGroup;
 			children = (
+				84A5FA881884D81F007AC17F /* iPad */,
 				06191330187EFA860015A5EC /* Services */,
 				0619132C187EEF420015A5EC /* Models */,
 				060E4B9F187D90A90011FC22 /* Common */,
@@ -410,6 +411,13 @@
 			name = Sprites;
 			sourceTree = "<group>";
 		};
+		84A5FA881884D81F007AC17F /* iPad */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = iPad;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -458,6 +466,9 @@
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = huangluyang;
 				TargetAttributes = {
+					84832523187D52BB00365C6F = {
+						DevelopmentTeam = 95QZ9FS74T;
+					};
 					8483254B187D52BB00365C6F = {
 						TestTargetID = 84832523187D52BB00365C6F;
 					};
@@ -677,11 +688,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "WuLin/WuLin-Prefix.pch";
 				INFOPLIST_FILE = "WuLin/WuLin-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -691,11 +707,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "WuLin/WuLin-Prefix.pch";
 				INFOPLIST_FILE = "WuLin/WuLin-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

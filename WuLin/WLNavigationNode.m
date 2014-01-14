@@ -36,7 +36,7 @@
         SKTexture *barTexture = [SKTexture textureWithImageNamed:@"nav_bg"];
         WLNavigationBarNode *navigationBar = [WLNavigationBarNode spriteNodeWithTexture:barTexture size:CGSizeMake(size.width, 44)];
         navigationBar.anchorPoint = CGPointZero;
-        navigationBar.centerRect = CGRectMake(128, 29, 1, 1);
+//        navigationBar.centerRect = CGRectMake(128, 29, 1, 1);
         navigationBar.position = CGPointMake(0, size.height - navigationBar.size.height);
         navigationBar.zPosition = 1;
         self.navigationBar = navigationBar;
@@ -44,14 +44,14 @@
         
         WLBarButtonItemNode *backItem = [WLBarButtonItemNode spriteNodeWithImageNamed:@"nav_back" delegate:self];
         backItem.anchorPoint = CGPointZero;
-        backItem.position = CGPointMake(5, (navigationBar.size.height - backItem.size.height) / 2);
+        backItem.position = CGPointMake(10, (navigationBar.size.height - backItem.size.height) / 2);
         backItem.alpha = 0;
         self.backItem = backItem;
         [navigationBar addChild:backItem];
         
         if (rootNode.rightBarButtonItem) {
             self.rightBarButtonItem = rootNode.rightBarButtonItem;
-            rootNode.rightBarButtonItem.position = CGPointMake(self.navigationBar.size.width - rootNode.rightBarButtonItem.size.width - 5, (self.navigationBar.size.height - rootNode.rightBarButtonItem.size.height) / 2);
+            rootNode.rightBarButtonItem.position = CGPointMake(self.navigationBar.size.width - rootNode.rightBarButtonItem.size.width - 10, (self.navigationBar.size.height - rootNode.rightBarButtonItem.size.height) / 2);
             [self.navigationBar addChild:rootNode.rightBarButtonItem];
         }
         

@@ -10,4 +10,6 @@
 
 @interface WLStoreViewNode : WLSelectorViewNode
 
++ (instancetype)storeWithImageName:(NSString *)imageName size:(CGSize)size;
+
 @end

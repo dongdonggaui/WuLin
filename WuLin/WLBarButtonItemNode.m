@@ -20,6 +20,8 @@
 {
     WLBarButtonItemNode *node = [self spriteNodeWithImageNamed:name];
     if (node) {
+        node.xScale = 0.6;
+        node.yScale = 0.6;
         node.delegate = delegate;
         node.userInteractionEnabled = YES;
         node.anchorPoint = CGPointZero;

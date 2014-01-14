@@ -36,6 +36,17 @@
     return node;
 }
 
++ (instancetype)storeWithImageName:(NSString *)imageName size:(CGSize)size
+{
+    WLStoreViewNode *node = [super spriteNodeWithImageNamed:imageName];
+    if (node) {
+        node.size = size;
+        [node generalInit];
+    }
+    
+    return node;
+}
+
 #pragma mark - override
 - (void)didReceiveAddToParentNotification:(NSNotification *)notification
 {

@@ -102,7 +102,9 @@
         [WLGridManager sharedInstance].currentRate = 0.5;
         
     } else if ([button.name isEqualToString:@"button1"]) {
-        WLStoreViewNode *node = [WLStoreViewNode spriteNodeWithColor:[SKColor clearColor] size:self.size];
+//        WLStoreViewNode *node = [WLStoreViewNode spriteNodeWithColor:[SKColor clearColor] size:self.size];
+        WLStoreViewNode *node = [WLStoreViewNode storeWithImageName:@"store_bg" size:self.size];
+        node.centerRect = CGRectMake(40.0 / 100.0, 67.0 / 154.0, 4.0 / 100.0, 20.0 / 154.0);
         WLNavigationNode *nav = [[WLNavigationNode alloc] initWithRootNode:node size:self.size];
         nav.navigationBar.title = @"商店";
         [self addNode:nav atSceneLayer:WLSceneLayerHUD];

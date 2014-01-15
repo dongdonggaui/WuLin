@@ -36,7 +36,7 @@
 }
 
 #pragma mark - To be override
-- (void)moveToPointInMathCoord:(CGPoint)point
+- (void)moveToPointInGrid:(CGPoint)point
 {
 }
 

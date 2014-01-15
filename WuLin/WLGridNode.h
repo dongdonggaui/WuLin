@@ -10,7 +10,7 @@
 
 @interface WLGridNode : WLLayerdNode
 
-- (void)moveToPointInMathCoord:(CGPoint)point;
+- (void)moveToPointInGrid:(CGPoint)point;
 - (void)showGrid;
 - (void)hideGrid;
 

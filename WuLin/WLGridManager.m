@@ -31,7 +31,7 @@
     for (NSInteger y = 0; y < gridHeight; y++) {
         for (NSInteger x = 0; x < gridWidth; x++) {
             SKSpriteNode *node = [SKSpriteNode spriteNodeWithImageNamed:@"test_grid"];
-            CGPoint position = [self screenPointAtGridX:x gridY:y currentRate:[WLGridManager sharedInstance].currentRate width:64.f height:32.f];
+            CGPoint position = [self screenPointAtGridX:x gridY:y];
 //            node.alpha = 0.05;
             node.xScale = [WLGridManager sharedInstance].currentRate;
             node.yScale = [WLGridManager sharedInstance].currentRate;
@@ -53,12 +53,17 @@
 
 + (CGPoint)screenPointAtGridX:(NSInteger)x gridY:(NSInteger)y
 {
+    return [self screenPointAtGridX:x gridY:y offset:[[self sharedInstance] basePoint]];
+}
+
++ (CGPoint)screenPointAtGridX:(NSInteger)x gridY:(NSInteger)y offset:(CGPoint)offset
+{
     WLGridManager *manager = [self sharedInstance];
     CGFloat zoomRate = manager.currentRate;
     CGFloat width = manager.tileWidth;
     CGFloat height = manager.tileHeight;
     
-    return [self screenPointAtGridX:x gridY:y currentRate:zoomRate width:width height:height];
+    return [self screenPointAtGridX:x gridY:y currentRate:zoomRate width:width height:height basePoint:offset];
 }
 
 + (CGPoint)gridAtScreenPoint:(CGPoint)point
@@ -78,10 +83,8 @@
                   currentRate:(CGFloat)rate
                         width:(CGFloat)width
                        height:(CGFloat)height
+                    basePoint:(CGPoint)basePoint;
 {
-    WLGridManager *manager = [self sharedInstance];
-    CGPoint basePoint = manager.basePoint;
-    
     return CGPointMake(floorf(basePoint.x + width * rate / 2 * (x - y)), floorf(basePoint.y - height * rate / 2 * (x + y)));
 }
 

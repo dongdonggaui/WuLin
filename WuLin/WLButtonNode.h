@@ -28,7 +28,12 @@ extern const NSString *WLButtonNodeDidTappedNotification;
 @property (nonatomic) NSString *selectedTitle;
 @property (nonatomic, getter = isSelected) BOOL selected;
 
-+ (instancetype)buttonWithImageName:(NSString *)name delegate:(id<WLButtonNodeDelegate>)delegate;
++ (instancetype)buttonWithImageName:(NSString *)name
+                backgroundImageName:(NSString *)background
+                              title:(NSString *)title
+                              scale:(CGFloat)scale
+                           delegate:(id<WLButtonNodeDelegate>)delegate;
+
 + (instancetype)buttonWithColor:(UIColor *)color size:(CGSize)size delegate:(id<WLButtonNodeDelegate>)delegate;
 
 @end

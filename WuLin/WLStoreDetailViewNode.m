@@ -83,7 +83,7 @@ const NSString *kWLDidSelectedTobeBuildNotification = @"kWLDidSelectedTobeBuildN
             NSDictionary *item = [self.items objectAtIndex:i];
             WLButtonNode *button;
             if (0 == i) {
-                button = [WLButtonNode buttonWithImageName:[item objectForKey:@"image"] delegate:self];
+                button = [WLButtonNode buttonWithImageName:[item objectForKey:@"image"] backgroundImageName:[item objectForKey:@"image"] title:@"" scale:1 delegate:self];
                 button.name = @"temple";
             } else {
                 button= [WLButtonNode buttonWithColor:[SKColor brownColor] size:CGSizeMake(150, self.scrollNode.size.height - 40) delegate:self];

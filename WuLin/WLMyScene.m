@@ -15,11 +15,15 @@
 #import "WLStoreViewNode.h"
 #import "WLStoreDetailViewNode.h"
 
-@interface WLMyScene ()
+@interface WLMyScene () <WLButtonNodeDelegate>
 
 @property (nonatomic) WLMenPai *menpai;
 
 @end
+
+static NSString *kWLMySceneStoreButton = @"store_button";
+static NSString *kWLMySceneFriendButton = @"store_button";
+static NSString *kWLMySceneSettingButton = @"store_button";
 
 @implementation WLMyScene
 
@@ -47,27 +51,23 @@
     self.menpai = world;
     [self addNode:world  atSceneLayer:WLSceneLayerWorld];
     
-    WLButtonNode *button = [WLButtonNode spriteNodeWithColor:[SKColor yellowColor] size:CGSizeMake(100, 40)];
-    button.name = @"button";
-    button.title = @"恢复比例";
-    button.userInteractionEnabled = YES;
-    button.position = CGPointMake(10, self.size.height - 20 - button.size.height);
-    [self addNode:button atSceneLayer:WLSceneLayerTop];
-    
-    WLButtonNode *button1 = [WLButtonNode spriteNodeWithColor:[SKColor greenColor] size:CGSizeMake(100, 40)];
-    button1.name = @"button1";
-    button1.title = @"建造设施";
+    WLButtonNode *button1 = [WLButtonNode buttonWithImageName:@"store_btn_icon" backgroundImageName:@"store_btn_bg" title:@"商店" scale:1 delegate:self];
+    button1.name = kWLMySceneStoreButton;
     button1.userInteractionEnabled = YES;
-    button1.position = CGPointMake(10, self.size.height - 20 - button1.size.height - button.size.height - 10);
+    button1.position = CGPointMake(self.size.width - button1.size.width - 10, 10);
     [self addNode:button1 atSceneLayer:WLSceneLayerTop];
     
-    WLButtonNode *button2 = [WLButtonNode spriteNodeWithColor:[SKColor blueColor] size:CGSizeMake(100, 40)];
-    button2.name = @"button2";
-    button2.title = @"显示网格";
-    button2.selectedTitle = @"隐藏网格";
-    button2.userInteractionEnabled = YES;
-    button2.position = CGPointMake(10, self.size.height - 20 - button2.size.height - button.size.height - 10 - button1.size.height - 10);
-    [self addNode:button2 atSceneLayer:WLSceneLayerTop];
+    WLButtonNode *friendButton = [WLButtonNode buttonWithImageName:@"friend_btn_icon" backgroundImageName:@"store_btn_bg" title:nil scale:0.5 delegate:self];
+    friendButton.name = kWLMySceneFriendButton;
+    friendButton.userInteractionEnabled = YES;
+    friendButton.position = CGPointMake(self.size.width - friendButton.size.width - 10, 10 + button1.size.height + 10);
+    [self addNode:friendButton atSceneLayer:WLSceneLayerTop];
+    
+    WLButtonNode *settingButton = [WLButtonNode buttonWithImageName:@"setting_btn_icon" backgroundImageName:@"store_btn_bg" title:nil scale:0.5 delegate:self];
+    settingButton.name = kWLMySceneSettingButton;
+    settingButton.userInteractionEnabled = YES;
+    settingButton.position = CGPointMake(self.size.width - friendButton.size.width - 10, 10 + button1.size.height + 10 + friendButton.size.height + 10);
+    [self addNode:settingButton atSceneLayer:WLSceneLayerTop];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didReceiveButtonNotification:) name:(NSString *)WLButtonNodeDidTappedNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didReceiveSelectedTobeBuildNotification:) name:(NSString *)kWLDidSelectedTobeBuildNotification object:nil];
@@ -80,7 +80,7 @@
         WLBuildingNode *temple = [[WLBuildingNode alloc] initWithName:@"temple"];
         if (temple) {
 //            temple.position = CGPointMake((self.menpai.size.width - temple.frame.size.width) / 2, (self.menpai.size.height - temple.frame.size.height) / 2);
-            [temple moveToPointInMathCoord:CGPointMake(0, 0)];
+            [temple moveToPointInGrid:CGPointMake(10, 10)];
             [self.menpai addNode:temple atWorldLayer:WLWorldLayerAboveGrid];
             DLog(@"temple frame = %@", NSStringFromCGRect(temple.frame));
         }
@@ -95,7 +95,7 @@
 //        building.userInteractionEnabled = YES;
 //        building.size = CGSizeMake(building.size.width, building.size.height);
 //        [self.menpai addNode:building atWorldLayer:WLWorldLayerAboveGrid];
-//        [building moveToPointInMathCoord:CGPointMake(1, 1)];
+//        [building moveToPointInGrid:CGPointMake(1, 1)];
 //        NSLog(@"(x, y) = %@", NSStringFromCGPoint(building.position));
         self.menpai.xScale = 1;
         self.menpai.yScale = 1;
@@ -103,12 +103,7 @@
         
     } else if ([button.name isEqualToString:@"button1"]) {
 //        WLStoreViewNode *node = [WLStoreViewNode spriteNodeWithColor:[SKColor clearColor] size:self.size];
-        WLStoreViewNode *node = [WLStoreViewNode storeWithImageName:@"store_bg" size:self.size];
-        node.centerRect = CGRectMake(40.0 / 100.0, 67.0 / 154.0, 4.0 / 100.0, 20.0 / 154.0);
-        WLNavigationNode *nav = [[WLNavigationNode alloc] initWithRootNode:node size:self.size];
-        nav.navigationBar.title = @"商店";
-        [self addNode:nav atSceneLayer:WLSceneLayerHUD];
-        [nav show];
+        
         
         
     } else if ([button.name isEqualToString:@"button2"]) {
@@ -141,6 +136,19 @@
 
 -(void)update:(CFTimeInterval)currentTime {
     /* Called before each frame is rendered */
+}
+
+#pragma mark - button delegate
+- (void)buttonNodeDidTapped:(WLButtonNode *)buttonNode
+{
+    if ([buttonNode.name isEqualToString:kWLMySceneStoreButton]) {
+        WLStoreViewNode *node = [WLStoreViewNode storeWithImageName:@"store_bg" size:self.size];
+        node.centerRect = CGRectMake(40.0 / 100.0, 67.0 / 154.0, 4.0 / 100.0, 20.0 / 154.0);
+        WLNavigationNode *nav = [[WLNavigationNode alloc] initWithRootNode:node size:self.size];
+        nav.navigationBar.title = @"商店";
+        [self addNode:nav atSceneLayer:WLSceneLayerHUD];
+        [nav show];
+    }
 }
 
 @end

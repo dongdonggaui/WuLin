@@ -25,12 +25,28 @@ const NSString *WLButtonNodeDidTappedNotification = @"WLButtonNodeDidTappedNotif
 
 @implementation WLButtonNode
 
-+ (instancetype)buttonWithImageName:(NSString *)name delegate:(id<WLButtonNodeDelegate>)delegate
++ (instancetype)buttonWithImageName:(NSString *)name backgroundImageName:(NSString *)background title:(NSString *)title scale:(CGFloat)scale delegate:(id<WLButtonNodeDelegate>)delegate
 {
-    WLButtonNode *button = [self spriteNodeWithImageNamed:name];
+    WLButtonNode *button = [self spriteNodeWithImageNamed:background];
     if (button) {
         button.delegate = delegate;
         [button buttonGeneralInit];
+        button.xScale = scale;
+        button.yScale = scale;
+        SKSpriteNode *image = [SKSpriteNode spriteNodeWithImageNamed:name];
+        image.anchorPoint = CGPointZero;
+        image.xScale = [name isEqualToString:@"store_btn_icon"] ? 0.5 : 1;
+        image.yScale = [name isEqualToString:@"store_btn_icon"] ? 0.5 : 1;
+        
+        if (title) {
+            button.title = title;
+            button.titleLabel.fontSize = 10;
+            button.titleLabel.position = CGPointMake(button.titleLabel.position.x, 15);
+            image.position = CGPointMake((button.size.width - image.size.width) / 2, button.size.height - image.size.height - 5);
+        } else {
+            image.position = CGPointMake(10, 10);
+        }
+        [button addChild:image];
     }
     
     return button;

@@ -13,12 +13,13 @@
 
 @property (nonatomic, readonly) CGPoint physicalCoord;
 @property (nonatomic, readonly) BOOL isBuilding;
+@property (nonatomic, readonly) SKSpriteNode * buildingFoundation;
 
 
 + (instancetype)buildingWithShadowImageName:(NSString *)imageName xTileCount:(int)xTileCount yTileCount:(int)yTileCount;
 - (instancetype)initWithName:(NSString *)name;
 
 - (void)cancelBuild;
-- (void)cofrimBuild;
+- (void)confirmBuild;
 
 @end

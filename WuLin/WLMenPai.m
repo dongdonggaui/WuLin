@@ -55,9 +55,9 @@
         [WLGridManager sharedInstance].yGridCount     = tileMap.mapSize.height;
         [WLGridManager sharedInstance].basePoint      = CGPointMake((self.size.width - tileMap.tileSize.width * 0.5) / 2, self.size.height - tileMap.tileSize.height * 0.5 - tileMap.position.y - 8);
         // generate grid
-        [WLGridManager generateTilesInNode:self
-                             withGridWidth:tileMap.mapSize.width
-                                gridHeight:tileMap.mapSize.height];
+//        [WLGridManager generateTilesInNode:self
+//                             withGridWidth:tileMap.mapSize.width
+//                                gridHeight:tileMap.mapSize.height];
         
         DLog(@"map.size = %@, tilesize = %@", NSStringFromCGSize(self.size), NSStringFromCGSize(tileMap.tileSize));
     }

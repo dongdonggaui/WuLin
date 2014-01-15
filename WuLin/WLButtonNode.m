@@ -30,23 +30,24 @@ const NSString *WLButtonNodeDidTappedNotification = @"WLButtonNodeDidTappedNotif
     WLButtonNode *button = [self spriteNodeWithImageNamed:background];
     if (button) {
         button.delegate = delegate;
-        [button buttonGeneralInit];
         button.xScale = scale;
         button.yScale = scale;
+        [button buttonGeneralInit];
         SKSpriteNode *image = [SKSpriteNode spriteNodeWithImageNamed:name];
         image.anchorPoint = CGPointZero;
-        image.xScale = [name isEqualToString:@"store_btn_icon"] ? 0.5 : 1;
-        image.yScale = [name isEqualToString:@"store_btn_icon"] ? 0.5 : 1;
+        image.xScale = scale;
+        image.yScale = scale;
+        [button addChild:image];
         
         if (title) {
             button.title = title;
-            button.titleLabel.fontSize = 10;
-            button.titleLabel.position = CGPointMake(button.titleLabel.position.x, 15);
-            image.position = CGPointMake((button.size.width - image.size.width) / 2, button.size.height - image.size.height - 5);
+            button.titleLabel.fontSize = 17;
+            button.titleLabel.position = CGPointMake(button.titleLabel.position.x, 20);
+            image.position = CGPointMake((button.size.width - image.size.width) / 2, button.size.height - image.size.height - 10);
         } else {
-            image.position = CGPointMake(10, 10);
+            image.position = CGPointMake((button.size.width - image.size.width * scale) / 2, (button.size.height - image.size.height) / 2);
         }
-        [button addChild:image];
+        DLog(@"button size = %@, image size = %@, init size = %@", NSStringFromCGSize(button.size), NSStringFromCGSize(image.size), NSStringFromCGSize(button.theInitSize));
     }
     
     return button;

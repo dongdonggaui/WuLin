@@ -15,6 +15,7 @@
 @property (nonatomic) CGPoint physicalCoord;
 @property (nonatomic) BOOL isBuilding;
 @property (nonatomic) SKSpriteNode *buildingFoundation;
+@property (nonatomic) SKSpriteNode *highlightGrid;
 @property (nonatomic) CGPoint gridCenterOffset;
 
 @property (nonatomic) SKSpriteNode *confirmNode;
@@ -89,7 +90,7 @@ static NSString *kWLConfirmButtonNodeName = @"confirm_button";
 {
     self.isBuilding = NO;
     self.isAllreadyExist = YES;
-    self.buildingFoundation.alpha = 0;
+    self.highlightGrid.alpha = 0;
     self.cancelNode.alpha = 0;
     self.confirmNode.alpha = 0;
 }
@@ -97,7 +98,7 @@ static NSString *kWLConfirmButtonNodeName = @"confirm_button";
 - (void)becomeEditable
 {
     self.isBuilding = YES;
-    self.buildingFoundation.alpha = 1;
+    self.highlightGrid.alpha = 1;
 }
 
 #pragma mark - Private methods
@@ -110,8 +111,11 @@ static NSString *kWLConfirmButtonNodeName = @"confirm_button";
     JSTileMap *tile = [JSTileMap mapNamed:[NSString stringWithFormat:@"%@.tmx", self.name] withBaseZPosition:1 andZOrderModifier:0];
     if (tile) {
         // add building foundation
-        self.buildingFoundation = [self generateBuildingFoundationWithGridSize:CGSizeMake(tile.mapSize.width - 1, tile.mapSize.height - 1)];
+        self.buildingFoundation = [self generateBaseGridWithGridSize:CGSizeMake(tile.mapSize.width - 1, tile.mapSize.height - 1) name:@"building_foundation"];
         [self addChild:self.buildingFoundation];
+        
+        self.highlightGrid = [self generateBaseGridWithGridSize:CGSizeMake(tile.mapSize.width - 1, tile.mapSize.height - 1) name:@"test_grid"];
+        [self addChild:self.highlightGrid];
         
         tile.xScale = [WLGridManager sharedInstance].currentRate;
         tile.yScale = [WLGridManager sharedInstance].currentRate;
@@ -140,7 +144,7 @@ static NSString *kWLConfirmButtonNodeName = @"confirm_button";
     [self addChild:self.confirmNode];
 }
 
-- (SKSpriteNode *)generateBuildingFoundationWithGridSize:(CGSize)size
+- (SKSpriteNode *)generateBaseGridWithGridSize:(CGSize)size name:(NSString *)name
 {
     SKSpriteNode *foundation = [SKSpriteNode node];
     foundation.anchorPoint = CGPointZero;
@@ -150,7 +154,7 @@ static NSString *kWLConfirmButtonNodeName = @"confirm_button";
     // add first 由于无法提前计算出原点坐标的偏移量，故需要先添加再调整
     for (int y = 0; y < gridHeight; y++) {
         for (int x = 0; x < gridWidth; x++) {
-            SKSpriteNode *node = [SKSpriteNode spriteNodeWithImageNamed:@"test_grid"];
+            SKSpriteNode *node = [SKSpriteNode spriteNodeWithImageNamed:name];
             CGPoint position = [WLGridManager screenPointAtGridX:x gridY:y offset:CGPointZero]; /* 由于无法提前计算出远点坐标的偏移量，默认横纵坐标偏移量均为0 */
 //            node.alpha = 0.05;
             node.xScale = [WLGridManager sharedInstance].currentRate;

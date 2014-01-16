@@ -51,19 +51,19 @@ static NSString *kWLMySceneSettingButton = @"setting_button";
     self.menpai = world;
     [self addNode:world  atSceneLayer:WLSceneLayerWorld];
     
-    WLButtonNode *button1 = [WLButtonNode buttonWithImageName:@"store_btn_icon" backgroundImageName:@"store_btn_bg" title:@"商店" scale:1 delegate:self];
+    WLButtonNode *button1 = [WLButtonNode buttonWithImageName:@"store_btn_icon" backgroundImageName:@"store_btn_bg" title:@"商店" scale:0.7 delegate:self];
     button1.name = kWLMySceneStoreButton;
     button1.userInteractionEnabled = YES;
     button1.position = CGPointMake(self.size.width - button1.size.width - 10, 10);
     [self addNode:button1 atSceneLayer:WLSceneLayerTop];
     
-    WLButtonNode *friendButton = [WLButtonNode buttonWithImageName:@"friend_btn_icon" backgroundImageName:@"friend_btn_bg" title:nil scale:1 delegate:self];
+    WLButtonNode *friendButton = [WLButtonNode buttonWithImageName:@"friend_btn_icon" backgroundImageName:@"friend_btn_bg" title:nil scale:0.7 delegate:self];
     friendButton.name = kWLMySceneFriendButton;
     friendButton.userInteractionEnabled = YES;
     friendButton.position = CGPointMake(self.size.width - friendButton.size.width - 10, 10 + button1.size.height + 10);
     [self addNode:friendButton atSceneLayer:WLSceneLayerTop];
     
-    WLButtonNode *settingButton = [WLButtonNode buttonWithImageName:@"setting_btn_icon" backgroundImageName:@"friend_btn_bg" title:nil scale:1 delegate:self];
+    WLButtonNode *settingButton = [WLButtonNode buttonWithImageName:@"setting_btn_icon" backgroundImageName:@"friend_btn_bg" title:nil scale:0.7 delegate:self];
     settingButton.name = kWLMySceneSettingButton;
     settingButton.userInteractionEnabled = YES;
     settingButton.position = CGPointMake(self.size.width - friendButton.size.width - 10, 10 + button1.size.height + 10 + friendButton.size.height + 10);

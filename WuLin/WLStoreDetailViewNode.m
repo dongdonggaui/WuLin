@@ -8,7 +8,9 @@
 
 #import "WLStoreDetailViewNode.h"
 #import "WLScrollViewNode.h"
-#import "WLButtonNode.h"
+
+#import "WLButtonNode+WLStoreItem.h"
+#import "SKSpriteNode+StretchableBacgroundNode.h"
 
 const NSString *kWLDidSelectedTobeBuildNotification = @"kWLDidSelectedTobeBuildNotification";
 
@@ -30,12 +32,12 @@ const NSString *kWLDidSelectedTobeBuildNotification = @"kWLDidSelectedTobeBuildN
     if (self) {
         self.items = items;
         self.anchorPoint = CGPointZero;
-        WLScrollViewNode *scrollNode = [WLScrollViewNode spriteNodeWithColor:[SKColor whiteColor] size:CGSizeMake(10, size.height - 88)];
+        WLScrollViewNode *scrollNode = [WLScrollViewNode spriteNodeWithColor:[SKColor clearColor] size:CGSizeMake(size.width, size.height - 88)];
         scrollNode.position = CGPointMake(0, 44);
         [self addChild:scrollNode];
         self.scrollNode = scrollNode;
         
-        SKSpriteNode *toolbar = [SKSpriteNode spriteNodeWithColor:[SKColor lightGrayColor] size:CGSizeMake(size.width, 44)];
+        SKSpriteNode *toolbar = [[SKSpriteNode node] WL_nodeWithLeftImage:@"nav_bg_0" middleImage:@"nav_bg_1" rightImage:@"nav_bg_2" size:CGSizeMake(size.width, 44)];
         toolbar.anchorPoint = CGPointZero;
         
         SKLabelNode *moneyLabel = [SKLabelNode labelNodeWithFontNamed:@"Chalkduster"];
@@ -58,6 +60,7 @@ const NSString *kWLDidSelectedTobeBuildNotification = @"kWLDidSelectedTobeBuildN
         diamondLabel.position = CGPointMake(self.size.width / 3 * 2 + (self.size.width / 3 - diamondLabel.frame.size.width) / 2, (toolbar.size.height - diamondLabel.frame.size.height) / 2);
         [toolbar addChild:diamondLabel];
         self.diamondLabel = diamondLabel;
+        toolbar.yScale = 0.6;
         
         [self addChild:toolbar];
         
@@ -79,22 +82,27 @@ const NSString *kWLDidSelectedTobeBuildNotification = @"kWLDidSelectedTobeBuildN
 - (void)storeDetailGeneralInit
 {
     if (self.items) {
+        CGFloat buttonWidth = iPad ? 250 : 150;
+        CGFloat buttonHeight = self.scrollNode.size.height -  40;
+        CGFloat margin = iPad ? 30 : 20;
         for (int i = 0; i < self.items.count; i++) {
             NSDictionary *item = [self.items objectAtIndex:i];
             WLButtonNode *button;
             if (0 == i) {
-                button = [WLButtonNode buttonWithImageName:[item objectForKey:@"image"] backgroundImageName:[item objectForKey:@"image"] title:@"" scale:1 delegate:self];
+                button = [WLButtonNode WL_storeDetailButtonWithImageName:[item objectForKey:@"image"] title:nil size:CGSizeMake(buttonWidth, buttonHeight)];
+                button.delegate = self;
                 button.name = @"temple";
             } else {
-                button= [WLButtonNode buttonWithColor:[SKColor brownColor] size:CGSizeMake(150, self.scrollNode.size.height - 40) delegate:self];
+                button = [WLButtonNode WL_storeDetailButtonWithImageName:nil title:nil size:CGSizeMake(buttonWidth, buttonHeight)];
+                button.delegate = self;
                 button.title = [item objectForKey:@"title"];
             }
             [button.userData removeAllObjects];
             [button.userData addEntriesFromDictionary:item];
-            button.position = CGPointMake(20 + i * (button.size.width + 20), 20);
+            button.position = CGPointMake(margin + i * (button.size.width + margin), margin);
             [self.scrollNode addChild:button];
         }
-        self.scrollNode.size = CGSizeMake(self.scrollNode.calculateAccumulatedFrame.size.width + 20, self.scrollNode.calculateAccumulatedFrame.size.height);
+//        self.scrollNode.size = CGSizeMake(self.scrollNode.calculateAccumulatedFrame.size.width + margin, self.scrollNode.calculateAccumulatedFrame.size.height);
     }
 }
 

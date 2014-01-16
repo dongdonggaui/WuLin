@@ -33,8 +33,7 @@
         [self addChild:rootNode];
         [[NSNotificationCenter defaultCenter] postNotificationName:(NSString *)kWLNodeDidAddToParentNotification object:rootNode];
         
-        SKTexture *barTexture = [SKTexture textureWithImageNamed:@"nav_bg"];
-        WLNavigationBarNode *navigationBar = [WLNavigationBarNode spriteNodeWithTexture:barTexture size:CGSizeMake(size.width, 44)];
+        WLNavigationBarNode *navigationBar = [WLNavigationBarNode barWithResizeBackgroundImages:@[@"nav_bg_0", @"nav_bg_1", @"nav_bg_2"] size:CGSizeMake(size.width, 44)];
         navigationBar.anchorPoint = CGPointZero;
 //        navigationBar.centerRect = CGRectMake(128, 29, 1, 1);
         navigationBar.position = CGPointMake(0, size.height - navigationBar.size.height);
@@ -70,16 +69,14 @@
     node.navigationNode = self;
     [self addChild:node];
     [[NSNotificationCenter defaultCenter] postNotificationName:(NSString *)kWLNodeDidAddToParentNotification object:node];
+    
     SKAction *move = [SKAction moveByX:-self.size.width y:0 duration:0.18];
     SKAction *complete = [SKAction runBlock:^{
         self.topNode = node;
     }];
-//    SKAction *fade = [SKAction fadeOutWithDuration:0.18];
-//    [self.topNode runAction:fade];
-    [node runAction:[SKAction sequence:@[move, complete]]];
     
-    SKAction *back = [SKAction moveByX:-self.size.width y:0 duration:0.18];
-    [self.topNode runAction:back];
+    [node runAction:[SKAction sequence:@[move, complete]]];
+    [self.topNode runAction:move];
 }
 
 - (void)popNode

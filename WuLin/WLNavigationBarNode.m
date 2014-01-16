@@ -7,6 +7,7 @@
 //
 
 #import "WLNavigationBarNode.h"
+#import "SKSpriteNode+StretchableBacgroundNode.h"
 
 @interface WLNavigationBarNode ()
 
@@ -16,11 +17,38 @@
 
 @implementation WLNavigationBarNode
 
++ (instancetype)barWithResizeBackgroundImages:(NSArray *)backgroundImages
+                                         size:(CGSize)size
+{
+    WLNavigationBarNode *bar = [super node];
+    if (bar) {
+        bar.size = size;
+        [bar navigationbarGeneralInit];
+        if (backgroundImages && backgroundImages.count > 0) {
+            if (backgroundImages.count == 3) {
+                NSString *leftNodeName   = [backgroundImages objectAtIndex:0];
+                NSString *middleNodeName = [backgroundImages objectAtIndex:1];
+                NSString *rightNodeName  = [backgroundImages objectAtIndex:2];
+                
+                SKSpriteNode *node = [bar WL_nodeWithLeftImage:leftNodeName
+                                                   middleImage:middleNodeName
+                                                    rightImage:rightNodeName
+                                                          size:size];
+                CGFloat rate = size.height * 2 / [UIImage imageNamed:leftNodeName].size.height;
+                node.yScale = rate;
+                [bar addChild:node];
+            }
+        }
+    }
+    
+    return bar;
+}
+
 + (instancetype)spriteNodeWithTexture:(SKTexture *)texture size:(CGSize)size
 {
     WLNavigationBarNode *bar = [super spriteNodeWithTexture:texture size:size];
     if (bar) {
-        [bar generalInit];
+        [bar navigationbarGeneralInit];
     }
     
     return bar;
@@ -30,7 +58,7 @@
 {
     WLNavigationBarNode *bar = [super spriteNodeWithColor:color size:size];
     if (bar) {
-        [bar generalInit];
+        [bar navigationbarGeneralInit];
     }
     
     return bar;
@@ -40,7 +68,7 @@
 {
     WLNavigationBarNode *bar = [super spriteNodeWithImageNamed:name];
     if (bar) {
-        [bar generalInit];
+        [bar navigationbarGeneralInit];
     }
     
     return bar;
@@ -50,7 +78,7 @@
 {
     self = [super initWithImageNamed:imageName];
     if (self) {
-        [self generalInit];
+        [self navigationbarGeneralInit];
         self.title = title;
     }
     
@@ -68,13 +96,14 @@
 }
 
 #pragma mark - Private methods
-- (void)generalInit
+- (void)navigationbarGeneralInit
 {
     self.userInteractionEnabled = YES;
     SKLabelNode *label = [SKLabelNode labelNodeWithFontNamed:@"Chalkduster"];
     label.fontSize = 17;
     label.fontColor = [SKColor blackColor];
     label.verticalAlignmentMode = SKLabelVerticalAlignmentModeCenter;
+    label.zPosition = self.zPosition + 1;
     [self addChild:label];
     self.titleLabel = label;
 }

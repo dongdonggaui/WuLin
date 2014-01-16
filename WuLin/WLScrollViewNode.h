@@ -10,6 +10,6 @@
 
 @interface WLScrollViewNode : WLSpriteNode
 
-@property (nonatomic) CGSize contentSize;
+@property (nonatomic, readonly) CGSize contentSize;
 
 @end

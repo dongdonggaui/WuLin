@@ -12,6 +12,8 @@
 
 @property (nonatomic) NSString * title;
 
++ (instancetype)barWithResizeBackgroundImages:(NSArray *)backgroundImages
+                                         size:(CGSize)size;
 - (instancetype)initWithTitle:(NSString *)title backgroundImageName:(NSString *)imageName;
 
 @end

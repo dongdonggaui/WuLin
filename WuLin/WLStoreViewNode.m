@@ -7,7 +7,7 @@
 //
 
 #import "WLStoreViewNode.h"
-#import "WLButtonNode.h"
+#import "WLButtonNode+WLStoreItem.h"
 #import "WLStoreDetailViewNode.h"
 
 @interface WLStoreViewNode () <WLButtonNodeDelegate>
@@ -64,7 +64,9 @@
         for (int j = 0; j < 3; j++) {
             CGFloat width = (self.size.width - 120) / 3;
             CGFloat height = (self.size.height - 114) / 2;
-            WLButtonNode *button = [WLButtonNode buttonWithColor:[SKColor purpleColor] size:CGSizeMake(width, height) delegate:self];
+//            WLButtonNode *button = [WLButtonNode buttonWithColor:[SKColor purpleColor] size:CGSizeMake(width, height) delegate:self];
+            WLButtonNode *button = [WLButtonNode WL_storeButtonWithImageName:@"store_title_bg" title:nil size:CGSizeMake(width, height)];
+            button.delegate = self;
             int index = i * 3 + j + 1;
             button.name = [NSString stringWithFormat:@"storeItem%d", index];
             button.position = CGPointMake(30 + j * (20 + width), 30 + i * (20 + height));
@@ -73,28 +75,28 @@
             switch (index) {
                 default:
                 case 1:
-                    button.title = @"宝藏";
+                    button.title = @"军队";
+                    [button addItemImage:@"store_item_army"];
                     break;
                 case 2:
-                    button.title = @"资源";
+                    button.title = @"防御";
+                    [button addItemImage:@"store_item_defence"];
                     break;
                 case 3:
-                    button.title = @"装饰";
+                    button.title = @"护盾";
+                    [button addItemImage:@"store_item_shield"];
                     break;
                 case 4:
-                    button.title = @"军队";
+                    button.title = @"宝藏";
+                    [button addItemImage:@"store_item_assets"];
                     break;
                 case 5:
-                    button.title = @"防御";
+                    button.title = @"资源";
+                    [button addItemImage:@"store_item_resource"];
                     break;
                 case 6:
-                    button.title = @"护盾";
-                    break;
-                case 7:
-                    button.title = @"xx";
-                    break;
-                case 8:
-                    button.title = @"xx";
+                    button.title = @"装饰";
+                    [button addItemImage:@"store_item_decorate"];
                     break;
             }
         }

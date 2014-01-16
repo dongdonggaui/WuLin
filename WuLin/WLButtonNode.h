@@ -7,6 +7,7 @@
 //
 
 #import <SpriteKit/SpriteKit.h>
+#import "WLShadowLabelNode.h"
 
 extern const NSString *WLButtonNodeDidTappedNotification;
 
@@ -27,12 +28,18 @@ extern const NSString *WLButtonNodeDidTappedNotification;
 @property (nonatomic) NSString *title;
 @property (nonatomic) NSString *selectedTitle;
 @property (nonatomic, getter = isSelected) BOOL selected;
+@property (nonatomic, readonly) WLShadowLabelNode *titleLabel;
 
 + (instancetype)buttonWithImageName:(NSString *)name
                 backgroundImageName:(NSString *)background
                               title:(NSString *)title
                               scale:(CGFloat)scale
                            delegate:(id<WLButtonNodeDelegate>)delegate;
+
++ (instancetype)buttonWithResizeBackgroundImages:(NSArray *)backgroundImages
+                                foregroundImages:(NSArray *)images
+                                           title:(NSString *)title
+                                            size:(CGSize)size;
 
 + (instancetype)buttonWithColor:(UIColor *)color size:(CGSize)size delegate:(id<WLButtonNodeDelegate>)delegate;
 

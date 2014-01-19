@@ -39,6 +39,8 @@
 		0619133D187F03AF0015A5EC /* LFCGzipUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 0619133C187F03AF0015A5EC /* LFCGzipUtility.m */; };
 		06191340187F03F20015A5EC /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0619133F187F03F20015A5EC /* libz.dylib */; };
 		06191346187F0D090015A5EC /* isometric_grass_and_water.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 06191345187F0D090015A5EC /* isometric_grass_and_water.tmx */; };
+		06CF8389188BAA9D00B01318 /* WLCardNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 06CF8388188BAA9D00B01318 /* WLCardNode.m */; };
+		06CF838B188C025600B01318 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06CF838A188C025600B01318 /* CoreMotion.framework */; };
 		06F7448C18858C72000902DB /* nav_close@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 06F7448918858C72000902DB /* nav_close@2x.png */; };
 		06F744901885908A000902DB /* store_bubble_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 06F7448F1885908A000902DB /* store_bubble_bg.png */; };
 		06F7449218859658000902DB /* nav_back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 06F7449118859658000902DB /* nav_back@2x.png */; };
@@ -161,6 +163,9 @@
 		0619133C187F03AF0015A5EC /* LFCGzipUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFCGzipUtility.m; sourceTree = "<group>"; };
 		0619133F187F03F20015A5EC /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		06191345187F0D090015A5EC /* isometric_grass_and_water.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = isometric_grass_and_water.tmx; sourceTree = "<group>"; };
+		06CF8387188BAA9D00B01318 /* WLCardNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLCardNode.h; sourceTree = "<group>"; };
+		06CF8388188BAA9D00B01318 /* WLCardNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WLCardNode.m; sourceTree = "<group>"; };
+		06CF838A188C025600B01318 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		06F7448918858C72000902DB /* nav_close@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav_close@2x.png"; sourceTree = "<group>"; };
 		06F7448F1885908A000902DB /* store_bubble_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = store_bubble_bg.png; sourceTree = "<group>"; };
 		06F7449118859658000902DB /* nav_back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav_back@2x.png"; sourceTree = "<group>"; };
@@ -244,6 +249,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				06CF838B188C025600B01318 /* CoreMotion.framework in Frameworks */,
 				06191340187F03F20015A5EC /* libz.dylib in Frameworks */,
 				8483252A187D52BB00365C6F /* CoreGraphics.framework in Frameworks */,
 				8483252C187D52BB00365C6F /* UIKit.framework in Frameworks */,
@@ -379,6 +385,7 @@
 		84832526187D52BB00365C6F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				06CF838A188C025600B01318 /* CoreMotion.framework */,
 				0619133F187F03F20015A5EC /* libz.dylib */,
 				84832527187D52BB00365C6F /* Foundation.framework */,
 				84832529187D52BB00365C6F /* CoreGraphics.framework */,
@@ -508,6 +515,8 @@
 				0604B52D1880DA2600B434AE /* WLNavigationBarNode.m */,
 				0604B5291880D9BF00B434AE /* WLBarButtonItemNode.h */,
 				0604B52A1880D9BF00B434AE /* WLBarButtonItemNode.m */,
+				06CF8387188BAA9D00B01318 /* WLCardNode.h */,
+				06CF8388188BAA9D00B01318 /* WLCardNode.m */,
 			);
 			name = Sprites;
 			sourceTree = "<group>";
@@ -713,6 +722,7 @@
 				84717D1C1883BBE3006740AA /* WLGridManager.m in Sources */,
 				0604B5411881436800B434AE /* WLStoreViewNode.m in Sources */,
 				0604B53B1881383100B434AE /* WLScrollViewNode.m in Sources */,
+				06CF8389188BAA9D00B01318 /* WLCardNode.m in Sources */,
 				0604B5331880EDAD00B434AE /* WLSpriteViewNode.m in Sources */,
 				0619133A187F03A10015A5EC /* JSTileMap.m in Sources */,
 				84832543187D52BB00365C6F /* WLMyScene.m in Sources */,

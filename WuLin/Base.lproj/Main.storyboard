@@ -13,22 +13,26 @@
                         <viewControllerLayoutGuide type="bottom" id="aDu-ga-LDC"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="bdc-N1-crn" customClass="SKView">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
                     <navigationItem key="navigationItem" id="Hay-qJ-tvo"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <connections>
                         <segue destination="zjA-1Q-XQ6" kind="modal" identifier="showSelector" modalTransitionStyle="crossDissolve" id="YfZ-kD-IOn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="btX-cZ-eVz" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="18" y="9"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="RTk-mX-lS8">
             <objects>
-                <navigationController definesPresentationContext="YES" id="zjA-1Q-XQ6" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="wlSelectorNav" definesPresentationContext="YES" id="zjA-1Q-XQ6" sceneMemberID="viewController">
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="lia-er-0xz">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -40,24 +44,44 @@
             </objects>
             <point key="canvasLocation" x="653" y="9"/>
         </scene>
-        <!--Selector View Controller-->
+        <!--Selector View Controller - 商店-->
         <scene sceneID="GWC-6m-ciw">
             <objects>
-                <viewController id="9hz-VN-nOi" customClass="WLSelectorViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WLSelectorViewController" title="商店" id="9hz-VN-nOi" customClass="WLSelectorViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="CCW-wO-fVA"/>
                         <viewControllerLayoutGuide type="bottom" id="jhs-rV-WZA"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="xqy-MT-zqh">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hyw-B4-GwX">
+                                <rect key="frame" x="45" y="77" width="133" height="197"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bXi-3o-4qF">
+                                <rect key="frame" x="186" y="77" width="133" height="197"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
                     <navigationItem key="navigationItem" id="4ZG-lZ-0ey"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W73-MS-Kx8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1167" y="8"/>
+            <point key="canvasLocation" x="1293" y="9"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

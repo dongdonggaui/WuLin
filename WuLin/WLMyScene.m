@@ -15,7 +15,9 @@
 #import "WLStoreViewNode.h"
 #import "WLStoreDetailViewNode.h"
 
-@interface WLMyScene () <WLButtonNodeDelegate>
+#import "WLSelectorViewController.h"
+
+@interface WLMyScene () <WLButtonNodeDelegate, SKPhysicsContactDelegate>
 
 @property (nonatomic) WLMenPai *menpai;
 
@@ -45,6 +47,9 @@ static NSString *kWLMySceneSettingButton = @"setting_button";
 - (void)didMoveToView:(SKView *)view
 {
     [super didMoveToView:view];
+    
+    self.physicsWorld.gravity = CGVectorMake(0, 0);
+    self.physicsWorld.contactDelegate = self;
     
     WLMenPai *world = [WLMenPai spriteNodeWithColor:[SKColor clearColor] size:CGSizeMake(600, 400)];
     world.userInteractionEnabled = YES;

@@ -27,14 +27,16 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    UIImage *image = [UIImage imageNamed:@"nav_close"];
-    button.frame = CGRectMake(0, 0, image.size.width, image.size.height);
-    [button setBackgroundImage:image forState:UIControlStateNormal];
-    [button addTarget:self action:@selector(dismissViewControllerAnimated:completion:) forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem *closeItem = [[UIBarButtonItem alloc] initWithCustomView:button];
+    UIBarButtonItem *closeItem = [[UIBarButtonItem alloc] initWithTitle:@"x" style:UIBarButtonItemStyleBordered target:self action:nil];
     self.navigationItem.rightBarButtonItem = closeItem;
-    [self.navigationController.navigationBar sizeThatFits:self.view.frame.size];
+//    UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+//    UIImage *image = [UIImage imageNamed:@"nav_close"];
+//    button.frame = CGRectMake(0, 0, image.size.width, image.size.height);
+//    [button setBackgroundImage:image forState:UIControlStateNormal];
+//    [button addTarget:self action:@selector(dismiss) forControlEvents:UIControlEventTouchUpInside];
+//    UIBarButtonItem *closeItem = [[UIBarButtonItem alloc] initWithCustomView:button];
+//    self.navigationItem.rightBarButtonItem = closeItem;
+//    [self.navigationController.navigationBar sizeThatFits:self.view.frame.size];
 }
 
 - (void)didReceiveMemoryWarning
@@ -43,9 +45,14 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (BOOL)shouldAutorotate
+{
+    return YES;
+}
+
 - (void)dismiss
 {
-    [self dismissViewControllerAnimated:NO completion:nil];
+    [self.view.superview removeFromSuperview];
 }
 
 @end

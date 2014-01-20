@@ -10,21 +10,21 @@
 	</dict>
 	<dict>
 		<key>title</key>
-		<string>金币100</string>
+		<string>castle</string>
 		<key>image</key>
-		<string></string>
+		<string>castle</string>
 	</dict>
 	<dict>
 		<key>title</key>
-		<string>金币100</string>
+		<string>church</string>
 		<key>image</key>
-		<string></string>
+		<string>church</string>
 	</dict>
 	<dict>
 		<key>title</key>
-		<string>金币100</string>
+		<string>palace</string>
 		<key>image</key>
-		<string></string>
+		<string>palace</string>
 	</dict>
 	<dict>
 		<key>title</key>

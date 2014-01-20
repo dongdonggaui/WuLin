@@ -88,7 +88,8 @@ const NSString *kWLDidSelectedTobeBuildNotification = @"kWLDidSelectedTobeBuildN
         for (int i = 0; i < self.items.count; i++) {
             NSDictionary *item = [self.items objectAtIndex:i];
             WLButtonNode *button;
-            if (0 == i) {
+            NSString *imageName = [item objectForKey:@"image"];
+            if (imageName != nil && imageName.length > 0) {
                 button = [WLButtonNode WL_storeDetailButtonWithImageName:[item objectForKey:@"image"] title:nil size:CGSizeMake(buttonWidth, buttonHeight)];
                 button.delegate = self;
                 button.name = @"temple";
@@ -97,6 +98,15 @@ const NSString *kWLDidSelectedTobeBuildNotification = @"kWLDidSelectedTobeBuildN
                 button.delegate = self;
                 button.title = [item objectForKey:@"title"];
             }
+//            if (0 == i) {
+//                button = [WLButtonNode WL_storeDetailButtonWithImageName:[item objectForKey:@"image"] title:nil size:CGSizeMake(buttonWidth, buttonHeight)];
+//                button.delegate = self;
+//                button.name = @"temple";
+//            } else {
+//                button = [WLButtonNode WL_storeDetailButtonWithImageName:nil title:nil size:CGSizeMake(buttonWidth, buttonHeight)];
+//                button.delegate = self;
+//                button.title = [item objectForKey:@"title"];
+//            }
             [button.userData removeAllObjects];
             [button.userData addEntriesFromDictionary:item];
             button.position = CGPointMake(margin + i * (button.size.width + margin), margin);

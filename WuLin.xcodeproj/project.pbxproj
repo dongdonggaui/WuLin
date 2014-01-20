@@ -51,6 +51,16 @@
 		841C5E48187D74FB00FE3ABD /* test_restroom.png in Resources */ = {isa = PBXBuildFile; fileRef = 841C5E44187D74FB00FE3ABD /* test_restroom.png */; };
 		841C5E49187D74FB00FE3ABD /* test_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 841C5E45187D74FB00FE3ABD /* test_selected.png */; };
 		84717D1C1883BBE3006740AA /* WLGridManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84717D1B1883BBE3006740AA /* WLGridManager.m */; };
+		847E22E8188D44F2004C83DE /* castle.png in Resources */ = {isa = PBXBuildFile; fileRef = 847E22E4188D44F2004C83DE /* castle.png */; };
+		847E22E9188D44F2004C83DE /* castle.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 847E22E5188D44F2004C83DE /* castle.tmx */; };
+		847E22EA188D44F2004C83DE /* church.png in Resources */ = {isa = PBXBuildFile; fileRef = 847E22E6188D44F2004C83DE /* church.png */; };
+		847E22EB188D44F2004C83DE /* church.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 847E22E7188D44F2004C83DE /* church.tmx */; };
+		847E22F2188D44FD004C83DE /* mountain.png in Resources */ = {isa = PBXBuildFile; fileRef = 847E22EC188D44FD004C83DE /* mountain.png */; };
+		847E22F3188D44FD004C83DE /* mountain.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 847E22ED188D44FD004C83DE /* mountain.tmx */; };
+		847E22F4188D44FD004C83DE /* mountain2.png in Resources */ = {isa = PBXBuildFile; fileRef = 847E22EE188D44FD004C83DE /* mountain2.png */; };
+		847E22F5188D44FD004C83DE /* mountain2.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 847E22EF188D44FD004C83DE /* mountain2.tmx */; };
+		847E22F6188D44FD004C83DE /* palace.png in Resources */ = {isa = PBXBuildFile; fileRef = 847E22F0188D44FD004C83DE /* palace.png */; };
+		847E22F7188D44FD004C83DE /* palace.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 847E22F1188D44FD004C83DE /* palace.tmx */; };
 		84832528187D52BB00365C6F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84832527187D52BB00365C6F /* Foundation.framework */; };
 		8483252A187D52BB00365C6F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84832529187D52BB00365C6F /* CoreGraphics.framework */; };
 		8483252C187D52BB00365C6F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8483252B187D52BB00365C6F /* UIKit.framework */; };
@@ -178,6 +188,16 @@
 		841C5E45187D74FB00FE3ABD /* test_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test_selected.png; sourceTree = "<group>"; };
 		84717D1A1883BBE3006740AA /* WLGridManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLGridManager.h; sourceTree = "<group>"; };
 		84717D1B1883BBE3006740AA /* WLGridManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WLGridManager.m; sourceTree = "<group>"; };
+		847E22E4188D44F2004C83DE /* castle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = castle.png; sourceTree = "<group>"; };
+		847E22E5188D44F2004C83DE /* castle.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = castle.tmx; sourceTree = "<group>"; };
+		847E22E6188D44F2004C83DE /* church.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = church.png; sourceTree = "<group>"; };
+		847E22E7188D44F2004C83DE /* church.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = church.tmx; sourceTree = "<group>"; };
+		847E22EC188D44FD004C83DE /* mountain.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mountain.png; sourceTree = "<group>"; };
+		847E22ED188D44FD004C83DE /* mountain.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = mountain.tmx; sourceTree = "<group>"; };
+		847E22EE188D44FD004C83DE /* mountain2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mountain2.png; sourceTree = "<group>"; };
+		847E22EF188D44FD004C83DE /* mountain2.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = mountain2.tmx; sourceTree = "<group>"; };
+		847E22F0188D44FD004C83DE /* palace.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = palace.png; sourceTree = "<group>"; };
+		847E22F1188D44FD004C83DE /* palace.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = palace.tmx; sourceTree = "<group>"; };
 		84832524187D52BB00365C6F /* WuLin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WuLin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84832527187D52BB00365C6F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		84832529187D52BB00365C6F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -352,6 +372,16 @@
 				06191334187F02F00015A5EC /* isometric_grass_and_water.png */,
 				0604B54218816EFE00B434AE /* test_ground.tmx */,
 				06191345187F0D090015A5EC /* isometric_grass_and_water.tmx */,
+				847E22E4188D44F2004C83DE /* castle.png */,
+				847E22E5188D44F2004C83DE /* castle.tmx */,
+				847E22E6188D44F2004C83DE /* church.png */,
+				847E22E7188D44F2004C83DE /* church.tmx */,
+				847E22EC188D44FD004C83DE /* mountain.png */,
+				847E22ED188D44FD004C83DE /* mountain.tmx */,
+				847E22EE188D44FD004C83DE /* mountain2.png */,
+				847E22EF188D44FD004C83DE /* mountain2.tmx */,
+				847E22F0188D44FD004C83DE /* palace.png */,
+				847E22F1188D44FD004C83DE /* palace.tmx */,
 				060E4B99187D8ED40011FC22 /* test_menpai_base.png */,
 				841C5E42187D74FB00FE3ABD /* test_bg.png */,
 				841C5E43187D74FB00FE3ABD /* test_grid.png */,
@@ -646,26 +676,35 @@
 				84AD615218867AB100865521 /* building_confirm.png in Resources */,
 				849368201888016D00A3CDB7 /* nav_bg_1.png in Resources */,
 				060E4B9A187D8ED40011FC22 /* test_menpai_base.png in Resources */,
+				847E22F2188D44FD004C83DE /* mountain.png in Resources */,
 				060DEE6D1886E5020020E1D4 /* store_btn_bg@2x.png in Resources */,
 				061770BF18828E0300C4AAD4 /* selector_temple.png in Resources */,
 				849368091887E75300A3CDB7 /* store_bubble_spark@2x.png in Resources */,
 				060DEE6C1886E5020020E1D4 /* setting_btn_icon@2x.png in Resources */,
+				847E22F6188D44FD004C83DE /* palace.png in Resources */,
 				060DEE701886EE790020E1D4 /* building_foundation.png in Resources */,
+				847E22EB188D44F2004C83DE /* church.tmx in Resources */,
 				06F7449218859658000902DB /* nav_back@2x.png in Resources */,
+				847E22F5188D44FD004C83DE /* mountain2.tmx in Resources */,
 				849368191887E7B400A3CDB7 /* store_btn_bg_6@2x.png in Resources */,
 				061770C31882B39500C4AAD4 /* temple.tmx in Resources */,
 				849368041887E32400A3CDB7 /* store_item_defence@2x.png in Resources */,
+				847E22EA188D44F2004C83DE /* church.png in Resources */,
 				8493681A1887E7B400A3CDB7 /* store_btn_bg_7@2x.png in Resources */,
 				061770C11882907F00C4AAD4 /* test_store_detail_items.plist in Resources */,
+				847E22F4188D44FD004C83DE /* mountain2.png in Resources */,
 				06191346187F0D090015A5EC /* isometric_grass_and_water.tmx in Resources */,
 				849368171887E7B400A3CDB7 /* store_btn_bg_4@2x.png in Resources */,
 				849367F41887C78E00A3CDB7 /* store_title_bg.png in Resources */,
 				84832547187D52BB00365C6F /* Images.xcassets in Resources */,
 				841C5E48187D74FB00FE3ABD /* test_restroom.png in Resources */,
+				847E22E9188D44F2004C83DE /* castle.tmx in Resources */,
 				849368141887E7B400A3CDB7 /* store_btn_bg_1@2x.png in Resources */,
 				841C5E46187D74FB00FE3ABD /* test_bg.png in Resources */,
 				06F744901885908A000902DB /* store_bubble_bg.png in Resources */,
+				847E22F3188D44FD004C83DE /* mountain.tmx in Resources */,
 				841C5E49187D74FB00FE3ABD /* test_selected.png in Resources */,
+				847E22E8188D44F2004C83DE /* castle.png in Resources */,
 				060DEE6A1886E5020020E1D4 /* friend_btn_bg@2x.png in Resources */,
 				84832545187D52BB00365C6F /* Spaceship.png in Resources */,
 				060DEE6B1886E5020020E1D4 /* friend_btn_icon@2x.png in Resources */,
@@ -683,6 +722,7 @@
 				849368051887E32400A3CDB7 /* store_item_resource@2x.png in Resources */,
 				849368061887E32400A3CDB7 /* store_item_shield@2x.png in Resources */,
 				8493681B1887E7B400A3CDB7 /* store_btn_bg_8@2x.png in Resources */,
+				847E22F7188D44FD004C83DE /* palace.tmx in Resources */,
 				849367D91887913300A3CDB7 /* stretch_btn_left.png in Resources */,
 				849368031887E32400A3CDB7 /* store_item_decorate@2x.png in Resources */,
 				84AD615118867AB100865521 /* building_cancel.png in Resources */,

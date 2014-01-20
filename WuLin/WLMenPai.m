@@ -9,6 +9,7 @@
 #import "WLMenPai.h"
 #import "WLGridManager.h"
 #import "JSTileMap.h"
+#import "WLBuildingNode.h"
 
 @interface WLMenPai ()
 
@@ -60,6 +61,19 @@
 //                                gridHeight:tileMap.mapSize.height];
         
         DLog(@"map.size = %@, tilesize = %@", NSStringFromCGSize(self.size), NSStringFromCGSize(tileMap.tileSize));
+    }
+    WLBuildingNode *mountain = [[WLBuildingNode alloc] initWithName:@"mountain"];
+    if (mountain) {
+        [self addNode:mountain atWorldLayer:WLWorldLayerAboveGrid];
+        [mountain moveToPointInGrid:CGPointMake(20, 5)];
+        [mountain confirmBuild];
+    }
+    
+    WLBuildingNode *mountain2 = [[WLBuildingNode alloc] initWithName:@"mountain2"];
+    if (mountain2) {
+        [self addNode:mountain2 atWorldLayer:WLWorldLayerAboveGrid];
+        [mountain2 moveToPointInGrid:CGPointMake(5, 20)];
+        [mountain2 confirmBuild];
     }
 }
 

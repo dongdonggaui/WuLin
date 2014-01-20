@@ -112,6 +112,7 @@ static NSString *kWLConfirmButtonNodeName = @"confirm_button";
     if (tile) {
         // add building foundation
         self.buildingFoundation = [self generateBaseGridWithGridSize:CGSizeMake(tile.mapSize.width - 1, tile.mapSize.height - 1) name:@"building_foundation"];
+        self.buildingFoundation.alpha = 0;
         [self addChild:self.buildingFoundation];
         
         self.highlightGrid = [self generateBaseGridWithGridSize:CGSizeMake(tile.mapSize.width - 1, tile.mapSize.height - 1) name:@"test_grid"];
